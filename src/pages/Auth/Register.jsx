@@ -1,11 +1,12 @@
 import React from "react";
 import Layout from "../../layout/Layout";
 import image from "../../assets/ounologo.png";
-import { axiosInstance } from "../../helpers/axios/data";
+//import { axiosInstance } from "../../helpers/axios/data";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { registerFormSchema } from "./schemas/FormSchema";
 import { ToastContainer, toast } from "react-toastify";
+import { postData } from "../../services/services";
 
 function Register() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function Register() {
           setTimeout(() => {
             action.resetForm();
             navigate("/login");
-          }, 2000);
+          }, 1000);
         } catch (error) {
           console.error("Error:", error);
           toast.error("Kayıt Başarısız!");

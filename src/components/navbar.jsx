@@ -10,37 +10,13 @@ import { axiosInstance } from "../helpers/axios/data";
 import { CiSearch } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import image from "./../assets/ounologo.png";
+import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
+  const { categories, isLoggedIn, handleLogout } = useAuth();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [categories, setCategories] = useState([]);
-  const [isLogin, setIslogin] = useState(false);
-
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
-  };
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axiosInstance.get("/category");
-        const returnedData = response.data;
-        setCategories(returnedData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    const token = localStorage.getItem("token");
-    if (token) {
-      setIslogin(true);
-    }
-    getData();
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIslogin(false);
   };
 
   return (
@@ -68,10 +44,10 @@ function Navbar() {
         </form>
 
         <div className="hidden md:flex justify-between items-center gap-4">
-          {isLogin ? <IoMdHeartEmpty size={22} /> : null}
+          {isLoggedIn ? <IoMdHeartEmpty size={22} /> : null}
           <HiOutlineShoppingBag size={22} />
-          {isLogin ? <RxPerson size={22} /> : null}
-          {!isLogin ? (
+          {isLoggedIn ? <RxPerson size={22} /> : null}
+          {!isLoggedIn ? (
             <div className="flex justify-center items-center gap-1">
               <Link to="/register">
                 <button className="group relative px-3 h-12 w-auto overflow-hidden rounded-none bg-white text-lg shadow">

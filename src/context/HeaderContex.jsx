@@ -4,10 +4,13 @@ import { axiosInstance } from "../helpers/axios/data";
 export const HeaderContext = createContext();
 
 export const HeaderProvider = ({ children }) => {
-  const value = {};
+ 
+  const values = {
+    
+  };
 
   return (
-    <HeaderProvider.Provider value={value}>{children}</HeaderProvider.Provider>
+    <HeaderContext.Provider value={values}>{children}</HeaderContext.Provider>
   );
 };
 

@@ -6,9 +6,11 @@ import "react-toastify/dist/ReactToastify.css";
 import Layout from "../../layout/Layout";
 import { useFormik } from "formik";
 import { loginFormSchema } from "./schemas/FormSchema";
-import { axiosInstance } from "../../helpers/axios/data";
+//import { axiosInstance } from "../../helpers/axios/data";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Login() {
+  const { login } = useAuth();
   const [checked, setChecked] = useState(false);
   const rememberMe = () => {
     setChecked(!checked);
@@ -19,19 +21,16 @@ export default function Login() {
     useFormik({
       initialValues: {
         email: "",
-        password: "", 
+        password: "",
       },
       validationSchema: loginFormSchema,
       onSubmit: async (values) => {
         try {
-          const response = await axiosInstance.post('/auth/login', values);
-          const data = response.data;
-          console.log("Response Data:", data);
-          localStorage.setItem("token", data.token);
+          await login(values);
           navigate("/");
         } catch (error) {
           console.error("Error:", error);
-          toast.error("E-posta veya şifre yanlış!");
+          toast.error("E-posta veya şifre yanlışş!");
         }
       },
     });
