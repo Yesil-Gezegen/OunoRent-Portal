@@ -12,6 +12,7 @@ import Institutional from "./pages/Institutional/Institutional";
 import About from "./pages/About/About";
 import Campaigns from "./pages/Campaigns/Campaigns";
 import { useAuth } from "./context/AuthContext";
+import Profile from "./pages/Profile/Profile";
 
 function Routers() {
   const { isLoggedIn } = useAuth();
@@ -32,6 +33,7 @@ function Routers() {
     { path: "/nasilcalisir", element: <Howitworks /> },
     { path: "/kurumsal", element: <Institutional /> },
     { path: "/kampanyalar", element: <Campaigns /> },
+    { path: "/profile", element: <Profile /> },
   ]);
   return <RouterProvider router={router} />;
 }
