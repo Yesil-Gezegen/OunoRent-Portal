@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import image from "../../assets/ounologo.png";
+import image from "../../../assets/ounologo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Layout from "../../layout/Layout";
+import Layout from "../../../layout/Layout";
 import { useFormik } from "formik";
-import { loginFormSchema } from "./schemas/FormSchema";
-//import { axiosInstance } from "../../helpers/axios/data";
-import { useAuth } from "../../context/AuthContext";
+import { loginFormSchema } from "../schemas/FormSchema";
+import { useAuth } from "../../../context/AuthContext";
 
 export default function Login() {
   const { login } = useAuth();

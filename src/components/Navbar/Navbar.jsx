@@ -5,12 +5,11 @@ import { IoPhonePortraitOutline } from "react-icons/io5";
 import { IoMdClose, IoIosArrowDown, IoMdHeartEmpty } from "react-icons/io";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { RxPerson } from "react-icons/rx";
-import png from "./../assets/png.png";
-import { axiosInstance } from "../helpers/axios/data";
+import png from "../../assets/png.png";
 import { CiSearch } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import image from "./../assets/ounologo.png";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
+import LogoIcon from "../svg/LogoIcon";
 
 function Navbar() {
   const { categories, isLoggedIn, handleLogout } = useAuth();
@@ -23,7 +22,7 @@ function Navbar() {
     <div className="shadow-sm">
       <div className="container mx-auto flex justify-between items-center px-3 xl:px-0">
         <Link to="/" className="hidden md:block text-4xl w-24 h-1/2">
-          <img src={image} alt="logo" />{" "}
+          <LogoIcon />
         </Link>
         <form className="hidden md:flex justify-center items-center px-5 py-5 w-2/5">
           <div className="flex w-full relative">
@@ -138,7 +137,7 @@ function Navbar() {
               <div className="flex-1 flex justify-start"></div>
 
               <div className="text-center flex-1 pr-8">
-                <img src={image} alt="logo" className="w-24 h-auto" />{" "}
+                <LogoIcon />
               </div>
               <div className="flex-1 flex justify-end">
                 <HiOutlineShoppingBag size={22} />

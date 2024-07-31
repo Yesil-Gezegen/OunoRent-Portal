@@ -5,9 +5,9 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
 import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
-import { axiosInstance } from "../helpers/axios/data";
+import { axiosInstance } from "../../helpers/axios/data";
 
-export default function HomeSlider() {
+export default function Slider() {
   const [height, setHeight] = useState("auto");
   const [slider, setSlider] = useState([]);
 
