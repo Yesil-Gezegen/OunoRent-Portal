@@ -19,10 +19,6 @@ export const AuthProvider = ({ children }) => {
       }
     };
     getCategories();
-    const token = localStorage.getItem("token");
-    if (token) {
-      setIsLoggedIn(true);
-    }
   }, []);
 
   const handleLogout = () => {
