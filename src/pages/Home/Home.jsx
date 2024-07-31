@@ -1,13 +1,13 @@
 import React from "react";
+import CardSlider from "../../components/ProductCardSlider/CardSlider";
 import Layout from "../../layout/Layout";
-import HomeSlider from "../../components/Slider";
-import CartSliderComponent from "../../components/CartSlider";
+import Slider from "../../components/Slider/Slider";
 
 function Home() {
   return (
     <Layout childrenClasses="pt-0">
-      <HomeSlider />
-      <CartSliderComponent />
+      <Slider />
+      <CardSlider />
     </Layout>
   );
 }

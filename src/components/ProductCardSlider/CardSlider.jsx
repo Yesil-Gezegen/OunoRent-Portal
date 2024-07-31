@@ -5,7 +5,7 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
-const CartSliderComponent = () => {
+const CardSlider = () => {
   return (
     <div className="">
       <Swiper
@@ -74,4 +74,4 @@ const CartSliderComponent = () => {
   );
 };
 
-export default CartSliderComponent;
+export default CardSlider;
