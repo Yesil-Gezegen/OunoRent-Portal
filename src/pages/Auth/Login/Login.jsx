@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import image from "../../../assets/ounologo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "../../../layout/Layout";
 import { useFormik } from "formik";
 import { loginFormSchema } from "../schemas/FormSchema";
 import { useAuth } from "../../../context/AuthContext";
+import LogoIcon from "../../../components/svg/LogoIcon";
 
 export default function Login() {
   const { login } = useAuth();
@@ -186,7 +186,7 @@ export default function Login() {
           </div>
         </div>
         <div className="hidden bg-cover lg:block lg:w-1/2 my-auto px-20">
-          <img src={image} alt="" />
+          <LogoIcon width={250} height={200} />
         </div>
       </div>
     </Layout>
