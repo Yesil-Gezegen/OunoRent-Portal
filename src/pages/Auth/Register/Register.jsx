@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { registerFormSchema } from "../schemas/FormSchema";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { postData } from "../../../services/services";
 import LogoIcon from "../../../components/svg/LogoIcon";
 
@@ -197,7 +198,7 @@ function Register() {
           </div>
         </div>
         <div className="hidden bg-cover lg:block lg:w-1/2 my-auto px-20">
-          <LogoIcon width={250} height={200}/>
+          <LogoIcon width={250} height={200} />
         </div>
       </div>
     </Layout>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { IoMdClose, IoIosArrowDown, IoMdHeartEmpty } from "react-icons/io";
@@ -10,9 +10,11 @@ import { CiSearch } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import LogoIcon from "../svg/LogoIcon";
+import { useHeader } from "../../context/HeaderContex";
 
 export default function Navbar() {
   const { categories, isLoggedIn, handleLogout } = useAuth();
+  const { menuItem } = useHeader();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -79,17 +81,13 @@ export default function Navbar() {
         <div className="container mx-auto px-3 xl:px-0">
           <div className="flex relative items-center justify-start">
             <div className="inline-block text-left group mr-4">
-              <button className="md:hidden p-2 my-2" onClick={toggleDrawer}>
-                <FaBars size={24} />
-              </button>
-
               <button className="hidden md:flex items-center h-[49px] w-[264px] mt-2 gap-3 bg-white p-2 rounded-ss-lg rounded-se-lg text-black border-b-[1px] border-red-400 hover:text-red-600">
                 <FaBars size={20} className="flex-0" />
                 <span className="flex-2">Tüm Kategoriler</span>
                 <IoIosArrowDown className="ml-auto" />
               </button>
               <div className="group">
-                <div className="absolute hidden md:block left-0 w-full bg-white text-black p-4 rounded-none shadow-lg ring-1 ring-black ring-opacity-5 transition-all duration-500 ease-in-out transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0 invisible group-hover:visible z-50 flex-grow">
+                <div className="absolute hidden md:block left-0 w-full bg-white text-black p-4 rounded-none shadow transition-all duration-500 ease-in-out transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0 invisible group-hover:visible z-50 flex-grow">
                   <div className="flex justify-between">
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-left flex-grow">
                       {categories.map((item, index) => (
@@ -133,13 +131,18 @@ export default function Navbar() {
               </Link>
             </div>
             {/* mobile navbar */}
-            <div className="flex justify-between items-center md:hidden flex-grow mr-4">
-              <div className="flex-1 flex justify-start"></div>
-
-              <div className="text-center flex-1 pr-8">
-                <LogoIcon />
+            <div className="flex justify-between items-center md:hidden flex-grow">
+              <div className="flex-1 flex justify-start">
+                <button className="py-2  -ml-2 my-2" onClick={toggleDrawer}>
+                  <FaBars size={24} />
+                </button>
               </div>
-              <div className="flex-1 flex justify-end">
+
+              <div className="flex-1 flex justify-center">
+                <LogoIcon color="#FFFFFF" />
+              </div>
+              <div className="flex-1 flex items-center justify-end space-x-2">
+                {isLoggedIn ? <IoMdHeartEmpty size={22} /> : null}
                 <HiOutlineShoppingBag size={22} />
               </div>
             </div>
@@ -152,10 +155,22 @@ export default function Navbar() {
           >
             <div
               className="fixed top-0 left-0 h-full bg-white p-4 overflow-y-auto w-full"
-              onClick={(e) => e.stopPropagation()}
+              // onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-between items-center mb-4">
-                <h2 className="font-bold text-lg text-red-400">Menü</h2>
+                <Link to="/login" className="flex items-center space-x-2">
+                  <RxPerson size={22} color="black" />
+                  {isLoggedIn ? (
+                    <p className="font-medium text-xl text-slate-800">
+                      kullanıcı adı
+                    </p>
+                  ) : (
+                    <p className="font-medium text-xl text-slate-800">
+                      Giriş Yap
+                    </p>
+                  )}
+                </Link>
+
                 <button onClick={toggleDrawer}>
                   <IoMdClose size={24} color="red" />
                 </button>
@@ -172,7 +187,7 @@ export default function Navbar() {
                   className="text-sm h-6 text-slate-900 ps-1 placeholder-gray-600 dark:placeholder-gray-300 border border-gray-1 focus:outline-none"
                 />
               </div>
-              {/* .... */}
+              {/* Mobil tüm kategoriler menüsü */}
               <ul className="space-y-2 text-left">
                 <li>
                   <a href="#" className="block text-black">
@@ -291,88 +306,18 @@ export default function Navbar() {
       {/* kategori slider */}
       <div className="container py-4 mx-auto px-3 xl:px-0">
         <div className="-mx-3 overflow-y-auto whitespace-nowrap scroll-hidden flex justify-evenly">
-          <a
-            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform md:my-0"
-            href="#"
-          >
-            <span className="flex justify-start items-center gap-1">
-              <IoPhonePortraitOutline />
-              Kategori
-            </span>
-          </a>
-          <a
-            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform md:my-0"
-            href="#"
-          >
-            <span className="flex justify-start items-center gap-1">
-              <IoPhonePortraitOutline />
-              Kategori
-            </span>
-          </a>
-
-          <a
-            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform md:my-0"
-            href="#"
-          >
-            <span className="flex justify-start items-center gap-1">
-              <IoPhonePortraitOutline />
-              Kategori
-            </span>
-          </a>
-          <a
-            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform md:my-0"
-            href="#"
-          >
-            <span className="flex justify-start items-center gap-1">
-              <IoPhonePortraitOutline />
-              Kategori
-            </span>
-          </a>
-          <a
-            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform md:my-0"
-            href="#"
-          >
-            <span className="flex justify-start items-center gap-1">
-              <IoPhonePortraitOutline />
-              Kategori
-            </span>
-          </a>
-          <a
-            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform md:my-0"
-            href="#"
-          >
-            <span className="flex justify-start items-center gap-1">
-              <IoPhonePortraitOutline />
-              Kategori
-            </span>
-          </a>
-          <a
-            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform md:my-0"
-            href="#"
-          >
-            <span className="flex justify-start items-center gap-1">
-              <IoPhonePortraitOutline />
-              Kategori
-            </span>
-          </a>
-          <a
-            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform md:my-0"
-            href="#"
-          >
-            <span className="flex justify-start items-center gap-1">
-              <IoPhonePortraitOutline />
-              Kategori
-            </span>
-          </a>
-          <a
-            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform md:my-0"
-            href="#"
-          >
-            <span className="flex justify-start items-center gap-1">
-              <IoPhonePortraitOutline />
-              Kategori
-            </span>
-          </a>
+          {menuItem.map((item, index) => (
+            <a
+              key={index}
+              className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform md:my-0"
+              href="#"
+            >
+              <span className="flex justify-start items-center gap-1">
+                <IoPhonePortraitOutline />
+                {item.label}
+              </span>
+            </a>
+          ))}
         </div>
       </div>
     </div>
