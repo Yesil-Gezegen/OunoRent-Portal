@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import LogoIcon from "../svg/LogoIcon";
 
-function Navbar() {
+export default function Navbar() {
   const { categories, isLoggedIn, handleLogout } = useAuth();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const toggleDrawer = () => {
@@ -378,5 +378,3 @@ function Navbar() {
     </div>
   );
 }
-
-export default Navbar;
