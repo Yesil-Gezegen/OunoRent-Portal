@@ -187,17 +187,17 @@ function Register() {
             </div>
           </form>
           <div className="flex items-center justify-between mt-4">
-            <span className="w-1/5 border-b border-gray-300 md:w-1/4" />
+            <span className="w-1/6 border-b border-gray-300 lg:w-1/5" />
             <a
               href="/login"
               className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline"
             >
               hesabınız var mı? GİRİŞ YAPIN
             </a>
-            <span className="w-1/5 border-b border-gray-300 md:w-1/4" />
+            <span className="w-1/6 border-b border-gray-300 lg:w-1/5" />
           </div>
         </div>
-        <div className="hidden bg-cover lg:block lg:w-1/2 my-auto px-20">
+        <div className="hidden bg-cover lg:flex lg:items-center lg:justify-center lg:w-1/2">
           <LogoIcon width={250} height={200} />
         </div>
       </div>
