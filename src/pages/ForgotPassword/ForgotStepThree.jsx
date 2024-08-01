@@ -92,7 +92,7 @@ function ForgotStepThree() {
               type="submit"
               className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white transition-colors duration-300 transform bg-gray-800 rounded-none hover:bg-gray-700 focus:outline-none  uppercase"
             >
-              GÖNDER
+              ŞİFRE YENİLE
             </button>
           </div>
         </form>

@@ -50,17 +50,14 @@ export default function Navbar() {
           {isLoggedIn ? <RxPerson size={22} /> : null}
           {!isLoggedIn ? (
             <div className="flex justify-center items-center gap-1">
-              <Link to="/register">
-                <button className="group relative px-3 h-12 w-auto overflow-hidden rounded-none bg-white text-lg shadow">
-                  <div className="absolute inset-0 w-0 bg-colorred transition-all duration-[300ms] ease-out group-hover:w-full"></div>
-                  <span className="relative text-black group-hover:text-white whitespace-nowrap capitalize">
-                    Üye Ol
-                  </span>
+              <Link to="/login">
+                <button className="px-3 h-10 w-auto rounded-md bg-white text-lg text-black transition-colors duration-200 transform hover:text-red-700 whitespace-nowrap capitalize">
+                  giriş yap{" "}
                 </button>
               </Link>
-              <Link to="/login">
-                <button className="px-3 h-12 font-medium tracking-wide text-white capitalize transition-colors duration-500 transform border border-red-600 bg-colorred whitespace-nowrap rounded-none focus:outline-none shadow">
-                  giriş yap{" "}
+              <Link to="/register">
+                <button className=" px-4 h-10 font-medium tracking-wide text-white capitalize transition-colors duration-500 transform bg-colorred whitespace-nowrap focus:outline-none shadow rounded-md hover:bg-gray-900">
+                  Üye Ol
                 </button>
               </Link>
             </div>

@@ -23,6 +23,7 @@ const ForgotStepTwo = lazy(() =>
 const ForgotStepThree = lazy(() =>
   import("./pages/ForgotPassword/ForgotStepThree")
 );
+const Blog = lazy(() => import("./pages/Blog/Blog"));
 
 function Routers() {
   const { isLoggedIn } = useAuth();
@@ -44,6 +45,7 @@ function Routers() {
     { path: "/kurumsal", element: <Institutional /> },
     { path: "/kampanyalar", element: <Campaigns /> },
     { path: "/profile", element: <Profile /> },
+    { path: "/blog", element: <Blog /> },
     {
       path: "/forgotstepone",
       element: <ForgotStepOne />,
@@ -56,6 +58,7 @@ function Routers() {
       path: "/forgotstepthree",
       element: <ForgotStepThree />,
     },
+
   ]);
   return (
     <Suspense

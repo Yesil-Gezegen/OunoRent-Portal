@@ -1,5 +1,6 @@
 import React from "react";
 import image from "./../../assets/ounologo.png";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -59,12 +60,12 @@ function Footer() {
           <div>
             <p className="font-semibold text-gray-800">Genel</p>
             <div className="flex flex-col items-start mt-5 space-y-2">
-              <a
-                href="#"
+              <Link
+                to="/blog"
                 className="text-gray-400 font-light text-sm transition-colors duration-300  hover:underline hover:text-red-500"
               >
                 Blog
-              </a>
+              </Link>
               <a
                 href="#"
                 className="text-gray-400 font-light text-sm transition-colors duration-300 hover:underline hover:text-red-500"
