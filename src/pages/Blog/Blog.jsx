@@ -2,8 +2,10 @@ import React from "react";
 import Layout from "../../layout/Layout";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
+import { useBlog } from "../../context/BlogContext";
 
 function Blog() {
+  const { blog } = useBlog();
   return (
     <Layout childrenClasses="pt-0">
       <section className="bg-white">
@@ -15,6 +17,9 @@ function Blog() {
           </div>
           <hr className="my-8 border-gray-100" />
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            {blog.map((item) => (
+              <div>{item.title}</div>
+            ))}
             {Array.from({ length: 4 }, (_, i) => (
               <Link
                 to="/"

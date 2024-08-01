@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
+import { CgMenuLeftAlt } from "react-icons/cg";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { IoMdClose, IoIosArrowDown, IoMdHeartEmpty } from "react-icons/io";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
@@ -78,8 +79,8 @@ export default function Navbar() {
         <div className="container mx-auto px-3 xl:px-0">
           <div className="flex relative items-center justify-start">
             <div className="inline-block text-left group mr-4">
-              <button className="hidden md:flex items-center h-[49px] w-[264px] mt-2 gap-3 bg-white p-2 rounded-ss-lg rounded-se-lg text-black border-b-[1px] border-red-400 hover:text-red-600">
-                <FaBars size={20} className="flex-0" />
+              <button className="hidden md:flex items-center h-[49px] w-[264px] mt-2 gap-3 bg-white p-2 rounded-ss-lg rounded-se-lg text-black border-b-[0.5px] border-red-600 hover:text-red-600">
+                <CgMenuLeftAlt size={20} className="flex-0" />
                 <span className="flex-2">Tüm Kategoriler</span>
                 <IoIosArrowDown className="ml-auto" />
               </button>
@@ -131,7 +132,7 @@ export default function Navbar() {
             <div className="flex justify-between items-center md:hidden flex-grow">
               <div className="flex-1 flex justify-start">
                 <button className="py-2  -ml-2 my-2" onClick={toggleDrawer}>
-                  <FaBars size={24} />
+                  <CgMenuLeftAlt size={24} />
                 </button>
               </div>
 
@@ -306,7 +307,7 @@ export default function Navbar() {
           {menuItem.map((item, index) => (
             <a
               key={index}
-              className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform md:my-0"
+              className="mx-4 text-sm leading-5 text-slate-950 transition-colors duration-300 transform md:my-0"
               href="#"
             >
               <span className="flex justify-start items-center gap-1">
