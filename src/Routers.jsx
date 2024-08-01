@@ -14,6 +14,17 @@ const Institutional = lazy(() => import("./pages/Institutional/Institutional"));
 const About = lazy(() => import("./pages/About/About"));
 const Campaigns = lazy(() => import("./pages/Campaigns/Campaigns"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
+const Blog = lazy(() => import("./pages/Blog/Blog"));
+const NotFound404 = lazy(() => import("./pages/404Page/404Page"))
+const ForgotStepOne = lazy(() =>
+  import("./pages/ForgotPassword/ForgotStepOne")
+);
+const ForgotStepTwo = lazy(() =>
+  import("./pages/ForgotPassword/ForgotStepTwo")
+);
+const ForgotStepThree = lazy(() =>
+  import("./pages/ForgotPassword/ForgotStepThree")
+);
 
 function Routers() {
   const { isLoggedIn } = useAuth();
@@ -35,6 +46,20 @@ function Routers() {
     { path: "/kurumsal", element: <Institutional /> },
     { path: "/kampanyalar", element: <Campaigns /> },
     { path: "/profile", element: <Profile /> },
+    { path: "/blog", element: <Blog /> },
+    {
+      path: "/forgotstepone",
+      element: <ForgotStepOne />,
+    },
+    {
+      path: "/forgotsteptwo",
+      element: <ForgotStepTwo />,
+    },
+    {
+      path: "/forgotstepthree",
+      element: <ForgotStepThree />,
+    },
+    { path: "/404notfound", element: <NotFound404 /> },
   ]);
   return (
     <Suspense

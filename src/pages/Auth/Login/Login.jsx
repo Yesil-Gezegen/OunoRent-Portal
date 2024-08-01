@@ -37,7 +37,7 @@ export default function Login() {
   return (
     <Layout>
       <ToastContainer />
-      <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow  lg:max-w-4xl">
+      <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow lg:max-w-4xl">
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
           <div className="flex flex-col justify-center items-center relative text-center mb-12">
             <p className="mt-3 text-xl text-center text-black">Giriş Yap</p>
@@ -160,7 +160,10 @@ export default function Login() {
                   Beni Hatırla
                 </span>
               </div>
-              <Link to="/" className="text-base text-red-600">
+              <Link
+                to="/forgotstepone"
+                className="text-base text-slate-950 underline hover:text-red-600"
+              >
                 Şifremi unuttum
               </Link>
             </div>
@@ -176,16 +179,16 @@ export default function Login() {
           </form>
           <div className="flex items-center justify-between mt-4">
             <span className="w-1/5 border-b border-gray-300 md:w-1/4" />
-            <a
-              href="/register"
+            <Link
+              to="/register"
               className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline"
             >
               hesabınız yok mu? Üye ol
-            </a>
+            </Link>
             <span className="w-1/5 border-b border-gray-300 md:w-1/4" />
           </div>
         </div>
-        <div className="hidden bg-cover lg:block lg:w-1/2 my-auto px-20">
+        <div className="hidden bg-cover lg:flex lg:items-center lg:justify-center lg:w-1/2">
           <LogoIcon width={250} height={200} />
         </div>
       </div>

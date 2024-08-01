@@ -1,14 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import png from "../../assets/png.png";
 
 const CardSlider = () => {
+  const [swiperInstance, setSwiperInstance] = useState(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+
+  const handleSlideChange = (swiper) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  };
+
+  useEffect(() => {
+    if (swiperInstance) {
+      handleSlideChange(swiperInstance);
+    }
+  }, [swiperInstance]);
+
   return (
-    <div className="">
+    <div className="pt-12">
       <Swiper
+        onSwiper={setSwiperInstance}
+        onSlideChange={handleSlideChange}
         slidesPerView={1}
         spaceBetween={10}
         navigation={{
@@ -50,7 +68,7 @@ const CardSlider = () => {
 
               <img
                 className="object-cover w-full h-48 mt-2"
-                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80"
+                src={png}
                 alt="NIKE AIR"
               />
 
@@ -63,11 +81,23 @@ const CardSlider = () => {
             </div>
           </SwiperSlide>
         ))}
-        <div className="custom-prev text-white absolute top-1/2 -left-2 transform -translate-y-1/2 cursor-pointer z-10 hidden md:block">
-          <IoIosArrowBack className="text-black" size={32} />
+
+        <div
+          className={`custom-prev duration-300 rounded-full hover:bg-colorred bg-white absolute top-1/2 left-2 transform -translate-y-1/2 cursor-pointer z-10 hidden md:block p-1 ${
+            isBeginning ? "opacity-50" : ""
+          }`}
+        >
+          <IoIosArrowBack className="text-red-600 hover:text-white" size={25} />
         </div>
-        <div className="custom-next text-white absolute top-1/2 -right-2 transform -translate-y-1/2 cursor-pointer z-10 hidden md:block">
-          <IoIosArrowForward className="text-black" size={32} />
+        <div
+          className={`custom-next duration-300 rounded-full hover:bg-colorred bg-white absolute top-1/2 right-2 transform -translate-y-1/2 cursor-pointer z-10 hidden md:block p-1 ${
+            isEnd ? "opacity-50" : ""
+          }`}
+        >
+          <IoIosArrowForward
+            className="text-red-600 hover:text-white"
+            size={25}
+          />
         </div>
       </Swiper>
     </div>
