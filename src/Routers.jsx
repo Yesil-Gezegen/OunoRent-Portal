@@ -15,7 +15,11 @@ const About = lazy(() => import("./pages/About/About"));
 const Campaigns = lazy(() => import("./pages/Campaigns/Campaigns"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
 const Blog = lazy(() => import("./pages/Blog/Blog"));
-const NotFound404 = lazy(() => import("./pages/404Page/404Page"))
+const Contact = lazy(() => import("./pages/Contact/Contact"));
+const ProductDetails = lazy(() =>
+  import("./pages/ProductDetails/ProductDetails")
+);
+const NotFound404 = lazy(() => import("./pages/404Page/404Page"));
 const ForgotStepOne = lazy(() =>
   import("./pages/ForgotPassword/ForgotStepOne")
 );
@@ -41,12 +45,14 @@ function Routers() {
       path: "/register",
       element: isLoggedIn ? <Navigate to="/" /> : <Register />,
     },
-    { path: "/hakkimizda", element: <About /> },
+    { path: "/about", element: <About /> },
     { path: "/nasilcalisir", element: <Howitworks /> },
     { path: "/kurumsal", element: <Institutional /> },
-    { path: "/kampanyalar", element: <Campaigns /> },
+    { path: "/campaigns", element: <Campaigns /> },
     { path: "/profile", element: <Profile /> },
     { path: "/blog", element: <Blog /> },
+    { path: "/contact", element: <Contact /> },
+    { path: "/productdetails", element: <ProductDetails /> },
     {
       path: "/forgotstepone",
       element: <ForgotStepOne />,

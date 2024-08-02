@@ -9,7 +9,7 @@ export const HeaderProvider = ({ children }) => {
   useEffect(() => {
     const getSliderMenuItem = async () => {
       try {
-        const response = await getData("/MenuItem");
+        const response = await getData("/MenuItem/Getactive");
         const returnedData = response.data;
         console.log("response", returnedData);
         setMenuItem(returnedData);

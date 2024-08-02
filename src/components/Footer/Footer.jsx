@@ -24,12 +24,12 @@ function Footer() {
           <div>
             <p className="font-semibold text-gray-800">Ounorent</p>
             <div className="flex flex-col items-start mt-5 space-y-2">
-              <a
-                href="#"
+              <Link
+                to="/about"
                 className="text-gray-400 font-light text-sm transition-colors duration-300 hover:underline hover:text-red-500"
               >
                 Hakkımızda
-              </a>
+              </Link>
               <a
                 href="#"
                 className="text-gray-400 font-light text-sm text-smtransition-colors duration-300  hover:underline hover:text-red-500"
@@ -66,35 +66,41 @@ function Footer() {
               >
                 Blog
               </Link>
-              <a
-                href="#"
+              <Link
+                to="/campaigns"
                 className="text-gray-400 font-light text-sm transition-colors duration-300 hover:underline hover:text-red-500"
               >
                 Kampanyalar
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/kurumsal"
                 className="text-gray-400 font-light text-sm transition-colors duration-300 hover:underline hover:text-red-500"
               >
                 Kurumsal
-              </a>
+              </Link>
             </div>
           </div>
           <div>
             <p className="font-semibold text-gray-800">Yardım</p>
             <div className="flex flex-col items-start mt-5 space-y-2">
-              <a
-                href="#"
+              <Link
+                to="/contact"
                 className="text-gray-400 font-light text-sm transition-colors duration-300 hover:underline hover:text-red-500"
               >
                 İletişim
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/faq"
+                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:underline hover:text-red-500"
+              >
+                SSS
+              </Link>
+              <Link
+                to="/nasilcalisir"
                 className="text-gray-400 font-light text-sm transition-colors duration-300  hover:underline hover:text-red-500"
               >
                 Nasıl Çalışır?
-              </a>
+              </Link>
             </div>
           </div>
         </div>

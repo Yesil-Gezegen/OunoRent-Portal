@@ -86,7 +86,7 @@ function Register() {
               <input
                 type="email"
                 required
-                className="bg-white border px-10 p-4 border-gray-300 text-gray-900 text-sm rounded-none focus:ring-red-500 focus:border-red-500 block w-full focus:outline-red-500"
+                className="bg-white border px-10 p-4 border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block w-full focus:outline-red-500"
                 placeholder="john.doe@company.com"
                 id="email"
                 name="email"
@@ -125,7 +125,7 @@ function Register() {
               <input
                 type="password"
                 required
-                className="block w-full px-10 p-4 bg-white border border-gray-300 text-gray-900 text-sm rounded-none focus:ring-red-500 focus:border-red-500 focus:outline-red-500"
+                className="block w-full px-10 p-4 bg-white border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-red-500 focus:border-red-500 focus:outline-red-500"
                 placeholder="•••••••••"
                 id="password"
                 name="password"
@@ -164,7 +164,7 @@ function Register() {
               <input
                 type="password"
                 required
-                className="block w-full px-10 p-4 bg-white border border-gray-300 text-gray-900 text-sm rounded-none focus:ring-red-500 focus:border-red-500 focus:outline-red-500"
+                className="block w-full px-10 p-4 bg-white border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-red-500 focus:border-red-500 focus:outline-red-500"
                 placeholder="•••••••••"
                 id="passwordConfirm"
                 name="passwordConfirm"
@@ -180,7 +180,7 @@ function Register() {
             <div className="mt-6">
               <button
                 type="submit"
-                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white transition-colors duration-300 transform bg-gray-800 rounded-none hover:bg-gray-700 focus:outline-none  uppercase"
+                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white transition-colors duration-300 transform bg-gray-800 rounded-sm hover:bg-gray-700 focus:outline-none  uppercase"
               >
                 Üye Ol
               </button>
