@@ -26,32 +26,32 @@ function Footer() {
             <div className="flex flex-col items-start mt-5 space-y-2">
               <Link
                 to="/about"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:underline hover:text-red-500"
+                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
               >
                 Hakkımızda
               </Link>
               <a
                 href="#"
-                className="text-gray-400 font-light text-sm text-smtransition-colors duration-300  hover:underline hover:text-red-500"
+                className="text-gray-400 font-light text-sm text-smtransition-colors duration-300 hover:text-red-500"
               >
                 Markalar
               </a>
               <a
                 href="#"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:underline hover:text-red-500"
+                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
               >
                 Çerezler
               </a>
               <a
                 href="#"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:underline hover:text-red-500"
+                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
               >
                 KVKK
               </a>
 
               <a
                 href="#"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:underline hover:text-red-500"
+                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
               >
                 Sözleşmeler
               </a>
@@ -62,19 +62,19 @@ function Footer() {
             <div className="flex flex-col items-start mt-5 space-y-2">
               <Link
                 to="/blog"
-                className="text-gray-400 font-light text-sm transition-colors duration-300  hover:underline hover:text-red-500"
+                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
               >
                 Blog
               </Link>
               <Link
                 to="/campaigns"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:underline hover:text-red-500"
+                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
               >
                 Kampanyalar
               </Link>
               <Link
                 to="/kurumsal"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:underline hover:text-red-500"
+                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
               >
                 Kurumsal
               </Link>
@@ -85,19 +85,19 @@ function Footer() {
             <div className="flex flex-col items-start mt-5 space-y-2">
               <Link
                 to="/contact"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:underline hover:text-red-500"
+                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
               >
                 İletişim
               </Link>
               <Link
                 to="/faq"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:underline hover:text-red-500"
+                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
               >
                 SSS
               </Link>
               <Link
                 to="/nasilcalisir"
-                className="text-gray-400 font-light text-sm transition-colors duration-300  hover:underline hover:text-red-500"
+                className="text-gray-400 font-light text-sm transition-colors duration-300  hover:text-red-500"
               >
                 Nasıl Çalışır?
               </Link>
@@ -105,7 +105,7 @@ function Footer() {
           </div>
         </div>
         <hr className="my-6 border-gray-200 md:my-10" />
-        <div className="sm:flex sm:items-center sm:justify-between">
+        <div className="flex justify-between sm:flex sm:items-center sm:justify-between">
           <a href="#">
             <img className="w-auto h-7" src={image} alt="" />
           </a>

@@ -16,6 +16,7 @@ const Campaigns = lazy(() => import("./pages/Campaigns/Campaigns"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
 const Blog = lazy(() => import("./pages/Blog/Blog"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
+const FaqPage = lazy(() => import("./pages/FAQ/FaqPage"));
 const ProductDetails = lazy(() =>
   import("./pages/ProductDetails/ProductDetails")
 );
@@ -52,6 +53,7 @@ function Routers() {
     { path: "/profile", element: <Profile /> },
     { path: "/blog", element: <Blog /> },
     { path: "/contact", element: <Contact /> },
+    { path: "/faq", element: <FaqPage /> },
     { path: "/productdetails", element: <ProductDetails /> },
     {
       path: "/forgotstepone",

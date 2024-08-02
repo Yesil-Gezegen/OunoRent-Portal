@@ -40,7 +40,7 @@ export default function Login() {
       <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow lg:max-w-4xl">
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
           <div className="flex flex-col justify-center items-center relative text-center mb-12">
-            <p className="mt-3 text-xl text-center text-black">Giriş Yap</p>
+            <p className="mt-3 text-xl font-semibold text-center text-black">Giriş Yap</p>
             <div className="-mt-3">
               <svg
                 width="172"
