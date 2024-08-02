@@ -23,9 +23,9 @@ export default function Navbar() {
 
   return (
     <div className="shadow-sm">
-      <div className="container mx-auto flex justify-between items-center px-3 xl:px-0">
+      <div className="container mx-auto flex justify-between items-center px-3 xl:px-0 py-0 md:py-2">
         <Link to="/" className="hidden md:block text-4xl w-24 h-1/2">
-          <LogoIcon />
+          <LogoIcon width={150} height={80} />
         </Link>
         <form className="hidden md:flex justify-center items-center px-5 py-5 w-2/5">
           <div className="flex w-full relative">
@@ -122,7 +122,7 @@ export default function Navbar() {
                 Kurumsal
               </Link>
               <Link
-                to="/kampanyalar"
+                to="/campaigns"
                 className="relative inline cursor-pointer text-sm font-medium before:bg-white  before:absolute before:-bottom-0.5 before:block before:h-[1px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100 "
               >
                 Kampanyalar
@@ -188,15 +188,15 @@ export default function Navbar() {
               {/* Mobil tüm kategoriler menüsü */}
               <ul className="space-y-2 text-left">
                 <li>
-                  <a href="#" className="block text-black">
+                  <Link to="/howitworks" className="block text-black">
                     Nasıl Çalışır?
-                  </a>
-                  <a href="#" className="block text-black">
+                  </Link>
+                  <Link to="/kurumsal" className="block text-black">
                     Kurumsal
-                  </a>
-                  <a href="#" className="block text-black">
+                  </Link>
+                  <Link to="/campaigns" className="block text-black">
                     Kampanyalar
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="#" className="block text-black">

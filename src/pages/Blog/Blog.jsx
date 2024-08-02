@@ -3,19 +3,23 @@ import Layout from "../../layout/Layout";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import { useBlog } from "../../context/BlogContext";
+import PageTitle from "../../components/Helpers/PageTitle";
 
 function Blog() {
   const { blog } = useBlog();
   return (
     <Layout childrenClasses="pt-0">
-      <section className="bg-white">
-        <div className="container px-6 py-10 mx-auto">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-semibold text-gray-800 capitalize">
-              Blog{" "}
-            </h1>
-          </div>
-          <hr className="my-8 border-gray-100" />
+      <div className="hidden md:block">
+        <PageTitle
+          title="Blog"
+          breadcrumb={[
+            { name: "Anasayfa", path: "/" },
+            { name: "Blog", path: "/blog" },
+          ]}
+        />
+      </div>
+      <section className="bg-qwhite">
+        <div className="container px-5 md:px-0 py-10 mx-auto">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {blog.map((item) => (
               <div>{item.title}</div>

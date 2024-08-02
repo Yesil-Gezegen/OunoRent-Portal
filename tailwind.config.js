@@ -9,6 +9,14 @@ export default {
       backgroundColor: {
         "colorred": "#D60000"
       },
+      colors: {
+        "qred": "#D60000",
+        "qblack": "#000000",
+        "qwhite": "#FFFFFF",
+      },
+      borderColor: {
+        "qgray": "#f3f4f6"
+      }
     },
   },
   plugins: [],

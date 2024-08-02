@@ -1,21 +1,22 @@
 import React from "react";
 import Layout from "../../layout/Layout";
+import Faq from "../../components/FAQ/Faq";
 import PageTitle from "../../components/Helpers/PageTitle";
 
-function Campaigns() {
+function FaqPage() {
   return (
-    <Layout childrenClasses="py-0">
+    <Layout childrenClasses="pt-0">
       <div className="hidden md:block">
         <PageTitle
-          title="Kampanyalar"
           breadcrumb={[
             { name: "Anasayfa", path: "/" },
-            { name: "Kampanyalar", path: "/campaigns" },
+            { name: "SSS", path: "/faq" },
           ]}
         />
       </div>
+      <Faq />
     </Layout>
   );
 }
 
-export default Campaigns;
+export default FaqPage;
