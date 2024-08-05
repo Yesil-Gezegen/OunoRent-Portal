@@ -18,11 +18,6 @@ export default {
       borderColor: {
         "qgray": "#f3f4f6"
       },
-      flexGrow: {
-        "1": 1,
-        "2": 2,
-        "3" :3
-      }
     },
   },
   plugins: [],

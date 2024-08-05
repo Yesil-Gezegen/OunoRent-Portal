@@ -36,7 +36,7 @@ function Blog() {
                   alt=""
                 />
                 <div className="my-8 px-4">
-                  <span class="inline-flex items-center rounded-sm bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                  <span className="inline-flex items-center rounded-sm bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
                     Tags
                   </span>
                   <h1 className="mt-4 text-xl font-semibold text-gray-800">

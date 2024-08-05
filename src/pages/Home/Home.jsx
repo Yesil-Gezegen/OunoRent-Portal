@@ -3,6 +3,7 @@ import CardSlider from "../../components/ProductCardSlider/CardSlider";
 import Layout from "../../layout/Layout";
 import Slider from "../../components/Slider/Slider";
 import LogoClouds from "../../components/LogoClouds/LogoClouds";
+import ProductCard from "../../components/ProductCard/Card";
 
 function Home() {
   return (
@@ -10,6 +11,7 @@ function Home() {
       <Slider />
       <CardSlider />
       <LogoClouds />
+      <ProductCard />
     </Layout>
   );
 }

@@ -13,7 +13,7 @@ export default function Slider() {
 
   useEffect(() => {
     const handleResize = () => {
-      setHeight(window.innerWidth * 0.3625);
+      setHeight(window.innerWidth * 0.3025);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
