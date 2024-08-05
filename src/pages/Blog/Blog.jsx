@@ -26,7 +26,7 @@ function Blog() {
             ))}
             {Array.from({ length: 4 }, (_, i) => (
               <Link
-                to="/"
+                to="/blogdetails"
                 key={i}
                 className="border border-gray-100 rounded-md"
               >
