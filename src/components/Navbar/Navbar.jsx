@@ -21,6 +21,15 @@ export default function Navbar() {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
+  const sortedCategories = categories
+    .map((category) => ({
+      ...category,
+      subCategories: category.subCategories.sort(
+        (a, b) => a.orderNumber - b.orderNumber
+      ),
+    }))
+    .sort((a, b) => a.orderNumber - b.orderNumber);
+
   return (
     <div className="shadow-sm">
       <div className="container mx-auto flex justify-between items-center px-3 xl:px-0 py-0 md:py-2">
@@ -47,12 +56,14 @@ export default function Navbar() {
 
         <div className="hidden md:flex justify-between items-center gap-4">
           {isLoggedIn ? <IoMdHeartEmpty size={22} /> : null}
-          <HiOutlineShoppingBag size={22} />
+          <Link to="/cartempty">
+            <HiOutlineShoppingBag size={22} />
+          </Link>
           {isLoggedIn ? <RxPerson size={22} /> : null}
           {!isLoggedIn ? (
             <div className="flex justify-center items-center gap-1">
               <Link to="/login">
-                <button className="px-3 h-10 w-auto rounded-md bg-white text-lg text-black transition-colors duration-200 transform hover:text-red-700 whitespace-nowrap capitalize">
+                <button className="px-3 h-10 font-medium w-auto rounded-md bg-white text-lg text-black transition-colors duration-200 transform hover:text-red-700 whitespace-nowrap capitalize">
                   giriş yap{" "}
                 </button>
               </Link>
@@ -81,22 +92,25 @@ export default function Navbar() {
             <div className="inline-block text-left group mr-4">
               <button className="hidden md:flex items-center h-[49px] w-[264px] mt-2 gap-3 bg-white p-2 rounded-ss-lg rounded-se-lg text-black border-b-[0.5px] border-red-600 hover:text-red-600">
                 <CgMenuLeftAlt size={20} className="flex-0" />
-                <span className="flex-2">Tüm Kategoriler</span>
+                <span className="flex-2 text-md font-medium">
+                  Tüm Kategoriler
+                </span>
                 <IoIosArrowDown className="ml-auto" />
               </button>
               <div className="group">
                 <div className="absolute hidden md:block left-0 w-full bg-white text-black p-4 rounded-none shadow transition-all duration-500 ease-in-out transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0 invisible group-hover:visible z-50 flex-grow">
                   <div className="flex justify-between">
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-left flex-grow">
-                      {categories.map((item, index) => (
+                      {sortedCategories.map((item, index) => (
                         <div key={index}>
                           <h3 className="font-bold">{item.name}</h3>
+
                           <ul>
-                            <li>Lorem ipsum</li>
-                            <li>Lorem ipsum</li>
-                            <li>Lorem ipsum</li>
-                            <li>Lorem ipsum</li>
-                            <li>Lorem ipsum</li>
+                            <li>
+                              {item.subCategories?.map((sub, index) => (
+                                <div key={index}>{sub.name}</div>
+                              ))}
+                            </li>
                           </ul>
                         </div>
                       ))}
@@ -111,19 +125,19 @@ export default function Navbar() {
             <div className="hidden md:flex space-x-4 mt-0 md:mt-2">
               <Link
                 to="/nasilcalisir"
-                className="relative inline cursor-pointer text-sm font-medium before:bg-white  before:absolute before:-bottom-0.5 before:block before:h-[1px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100"
+                className="relative inline cursor-pointer text-md font-medium before:bg-white  before:absolute before:-bottom-0.5 before:block before:h-[1px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100"
               >
                 Nasıl Çalışır?
               </Link>
               <Link
                 to="/kurumsal"
-                className="relative inline cursor-pointer text-sm font-medium before:bg-white  before:absolute before:-bottom-0.5 before:block before:h-[1px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100 "
+                className="relative inline cursor-pointer text-md font-medium before:bg-white  before:absolute before:-bottom-0.5 before:block before:h-[1px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100 "
               >
                 Kurumsal
               </Link>
               <Link
                 to="/campaigns"
-                className="relative inline cursor-pointer text-sm font-medium before:bg-white  before:absolute before:-bottom-0.5 before:block before:h-[1px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100 "
+                className="relative inline cursor-pointer text-md font-medium before:bg-white  before:absolute before:-bottom-0.5 before:block before:h-[1px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100 "
               >
                 Kampanyalar
               </Link>
@@ -136,12 +150,14 @@ export default function Navbar() {
                 </button>
               </div>
 
-              <div className="flex-1 flex justify-center">
+              <Link to="/" className="flex-1 flex justify-center">
                 <LogoIcon color="#FFFFFF" />
-              </div>
+              </Link>
               <div className="flex-1 flex items-center justify-end space-x-2">
                 {isLoggedIn ? <IoMdHeartEmpty size={22} /> : null}
-                <HiOutlineShoppingBag size={22} />
+                <Link to="/cartempty">
+                  <HiOutlineShoppingBag size={22} />
+                </Link>
               </div>
             </div>
           </div>
@@ -188,7 +204,7 @@ export default function Navbar() {
               {/* Mobil tüm kategoriler menüsü */}
               <ul className="space-y-2 text-left">
                 <li>
-                  <Link to="/howitworks" className="block text-black">
+                  <Link to="/nasilcalisir" className="block text-black">
                     Nasıl Çalışır?
                   </Link>
                   <Link to="/kurumsal" className="block text-black">
@@ -310,7 +326,7 @@ export default function Navbar() {
               className="mx-4 text-sm leading-5 text-slate-950 transition-colors duration-300 transform md:my-0"
               href="#"
             >
-              <span className="flex justify-start items-center gap-1">
+              <span className="flex justify-start items-center gap-1 font-medium">
                 <IoPhonePortraitOutline />
                 {item.label}
               </span>

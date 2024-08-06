@@ -21,19 +21,17 @@ export default function Slider() {
   }, []);
 
   useEffect(() => {
-    const slider = async () => {
+    const fetchSliderData = async () => {
       try {
-        const response = await axiosInstance.get("/Slider");
+        const response = await axiosInstance.get("/Slider/Getactive");
         const returnedData = response.data;
         setSlider(returnedData);
-        console.log("success", returnedData);
-      } catch {
-        (error) => {
-          console.error(error);
-        };
+        console.log("Başarılı", returnedData);
+      } catch (error) {
+        console.error("Slider verilerini çekerken hata oluştu:", error);
       }
     };
-    slider();
+    fetchSliderData();
   }, []);
 
   return (
@@ -54,49 +52,17 @@ export default function Slider() {
           disableOnInteraction: false,
         }}
       >
-        {/* {slider.map((item, index) => (
-          <SwiperSlide key={index} className="text-center text-lg bg-white flex justify-center items-center">
-          <img
-            src={item.imgUrl}
-            className="h-full w-full object-cover"
-          />
-        </SwiperSlide>
-        ))} */}
-
-        <SwiperSlide className="text-center text-lg bg-white flex justify-center items-center">
-          <img
-            src="https://jpeg.org/images/jpeg-home.jpg"
-            className="h-full w-full object-cover"
-          />
-        </SwiperSlide>
-        <SwiperSlide className="text-center text-lg bg-white flex justify-center items-center">
-          <img
-            src="https://www.menucool.com/slider/prod/image-slider-2.jpg"
-            alt="2"
-            className="h-full w-full object-cover"
-          />
-        </SwiperSlide>
-        <SwiperSlide className="text-center text-lg bg-white flex justify-center items-center">
-          <img
-            src="https://www.menucool.com/slider/prod/image-slider-5.jpg"
-            alt="2"
-            className="h-full w-full object-cover"
-          />
-        </SwiperSlide>
-        <SwiperSlide className="text-center text-lg bg-white flex justify-center items-center">
-          <img
-            src="https://www.menucool.com/slider/prod/image-slider-3.jpg"
-            alt="2"
-            className="h-full w-full object-cover"
-          />
-        </SwiperSlide>
-        <SwiperSlide className="text-center text-lg bg-white flex justify-center items-center">
-          <img
-            src="https://www.menucool.com/slider/prod/image-slider-1.jpg"
-            alt="2"
-            className="h-full w-full object-cover"
-          />
-        </SwiperSlide>
+        {slider.map((item, index) => (
+          <SwiperSlide
+            key={index}
+            className="text-center text-lg bg-white flex justify-center items-center"
+          >
+            <img
+              src={`http://10.10.3.181:5244/${item.mainImageUrl}`}
+              className="h-full w-full object-cover"
+            />
+          </SwiperSlide>
+        ))}
         <div className="custom-prev bg-[#F38A7B] text-white p-7 rounded-full absolute top-1/2 left-4 transform -translate-y-1/2 cursor-pointer z-10 hover:bg-colorred transition-colors duration-500 hidden md:block">
           <BsArrowLeft
             className="absolute left-5 bottom-0 text-black"

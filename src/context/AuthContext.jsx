@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const getCategories = async () => {
       try {
-        const response = await axiosInstance.get("/category");
+        const response = await axiosInstance.get("/Category");
         const returnedData = response.data;
         setCategories(returnedData);
       } catch (error) {

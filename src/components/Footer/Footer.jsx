@@ -12,7 +12,7 @@ function Footer() {
             <p className="font-semibold text-gray-800">Hakkımızda</p>
             <div className="flex flex-col items-start mt-5 space-y-2">
               <p
-                className="text-gray-400 font-light text-sm
+                className="text-gray-400 font-normal text-sm
               "
               >
                 Pek çok rakip firmanın olduğunu biliyoruz ancak sektördeki bir
@@ -26,32 +26,32 @@ function Footer() {
             <div className="flex flex-col items-start mt-5 space-y-2">
               <Link
                 to="/about"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
+                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
               >
                 Hakkımızda
               </Link>
               <a
                 href="#"
-                className="text-gray-400 font-light text-sm text-smtransition-colors duration-300 hover:text-red-500"
+                className="text-gray-400 font-normal text-sm text-smtransition-colors duration-300 hover:text-red-500"
               >
                 Markalar
               </a>
               <a
                 href="#"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
+                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
               >
                 Çerezler
               </a>
               <a
                 href="#"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
+                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
               >
                 KVKK
               </a>
 
               <a
                 href="#"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
+                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
               >
                 Sözleşmeler
               </a>
@@ -62,19 +62,19 @@ function Footer() {
             <div className="flex flex-col items-start mt-5 space-y-2">
               <Link
                 to="/blog"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
+                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
               >
                 Blog
               </Link>
               <Link
                 to="/campaigns"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
+                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
               >
                 Kampanyalar
               </Link>
               <Link
                 to="/kurumsal"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
+                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
               >
                 Kurumsal
               </Link>
@@ -85,19 +85,19 @@ function Footer() {
             <div className="flex flex-col items-start mt-5 space-y-2">
               <Link
                 to="/contact"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
+                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
               >
                 İletişim
               </Link>
               <Link
                 to="/faq"
-                className="text-gray-400 font-light text-sm transition-colors duration-300 hover:text-red-500"
+                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
               >
                 SSS
               </Link>
               <Link
                 to="/nasilcalisir"
-                className="text-gray-400 font-light text-sm transition-colors duration-300  hover:text-red-500"
+                className="text-gray-400 font-normal text-sm transition-colors duration-300  hover:text-red-500"
               >
                 Nasıl Çalışır?
               </Link>
@@ -111,7 +111,7 @@ function Footer() {
           </a>
 
           <div className="flex items-center mt-3 -mx-2 sm:mt-0">
-            <p className="text-xs font-extralight text-gray-400">
+            <p className="text-xs font-normal text-gray-400">
               © Copyright 2024. Yeşil Gezegen Teknoloji.
             </p>
             <a

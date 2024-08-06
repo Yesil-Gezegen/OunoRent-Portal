@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import png from "../../assets/png.png";
 import { Link } from "react-router-dom";
+import { BsCart3, BsHeart } from "react-icons/bs";
 
 const productDetail = [
   {
@@ -98,6 +99,7 @@ const CardSlider = () => {
       [productId]: { ...duration, discountedPrice },
     });
   };
+
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -114,7 +116,7 @@ const CardSlider = () => {
   }, [swiperInstance]);
 
   return (
-    <div className="pt-12 ">
+    <div className="pt-12 mx-2 sm:mx-0">
       <Swiper
         onSwiper={setSwiperInstance}
         onSlideChange={handleSlideChange}
@@ -124,11 +126,15 @@ const CardSlider = () => {
           nextEl: ".custom-next",
           prevEl: ".custom-prev",
         }}
-        modules={[Navigation]}
+        pagination={{
+          clickable: true,
+          el: ".swiper-pagination",
+        }}
+        modules={[Navigation, Pagination]}
         className="container"
         style={{ paddingBottom: 16, paddingTop: 16 }}
         breakpoints={{
-          640: {
+          350: {
             slidesPerView: 2,
             spaceBetween: 20,
           },
@@ -137,7 +143,7 @@ const CardSlider = () => {
             spaceBetween: 20,
           },
           1024: {
-            slidesPerView: 5,
+            slidesPerView: 4,
             spaceBetween: 20,
           },
         }}
@@ -147,31 +153,34 @@ const CardSlider = () => {
             key={pro.id}
             className="text-center bg-white flex justify-center items-center"
           >
-            <div className="max-w-xs overflow-hidden bg-white rounded-lg shadow">
-              <div className="space-y-2 relative">
-                <div className="absolute right-1">hiii</div>
+            <div className="max-w-sm mx-auto overflow-hidden bg-white rounded-md shadow">
+              <div className="space-y-2 relative m-3">
+                <div className="absolute right-1 top-1">
+                  <div className="bg-pink-100 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer">
+                    <BsHeart size={18} className="text-qred" />
+                  </div>
+                </div>
                 <Link to="/productdetails">
                   <img
-                    className="object-cover w-full h-52"
+                    className="object-cover w-full rounded-md "
                     src={png}
                     alt="NIKE AIR"
                   />
                 </Link>
-
-                <p className="mt-1 font-semibold line-clamp-1 text-md uppercase text-qblack">
+                <p className="mt-1 text-start font-semibold line-clamp-1 text-md uppercase text-qblack">
                   {pro.model}
                 </p>
               </div>
-              <div className="flex justify-between space-x-2 border border-gray-200 p-0 rounded-full mx-1 my-2">
+              <div className="flex justify-center bg-gray-50 border border-gray-100 p-0 rounded-md mx-3 my-1">
                 {durations.map((duration) => (
                   <button
                     key={duration.months}
                     onClick={() => handleButtonClick(pro.id, duration)}
-                    className={`w-14 h-12 ${
+                    className={`w-7 h-8 rounded-md flex flex-grow items-center justify-center text-qblack font-medium ${
                       selectedDurations[pro.id] &&
                       selectedDurations[pro.id].months === duration.months
-                        ? "bg-colorred rounded-full text-white shadow"
-                        : "rounded-full"
+                        ? "text-sm duration-300 transition-all shadow bg-qred text-qwhite"
+                        : "text-xs "
                     }`}
                     id={duration.months}
                   >
@@ -179,7 +188,7 @@ const CardSlider = () => {
                   </button>
                 ))}
               </div>
-              <div className="flex items-center justify-between px-4 py-2">
+              <div className="flex flex-col items-center gap-3 px-4 py-2 mb-2">
                 {selectedDurations[pro.id] && (
                   <p className="text-sm">
                     <span className="text-md font-semibold">
@@ -188,28 +197,29 @@ const CardSlider = () => {
                     /aylık ödenecek tutar
                   </p>
                 )}
+                <button className="w-full p-2 text-xs flex items-center justify-center gap-2 font-semibold border border-qblack text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded-md hover:text-qwhite hover:bg-colorred hover:border-qred focus:outline-none">
+                  <BsCart3 size={18} />
+                  Sepete Ekle
+                </button>
               </div>{" "}
-              <button className="px-2 py-2 mb-3 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:text-qwhite hover:bg-colorred focus:bg-gray-400 focus:outline-none">
-                Sepete Ekle
-              </button>
             </div>
           </SwiperSlide>
         ))}
-
         <div
-          className={`custom-prev rounded-full shadow-lg bg-white absolute top-1/2 left-2 cursor-pointer z-10 p-1 ${
+          className={`custom-prev rounded-full shadow-lg bg-white absolute top-1/2 left-2 cursor-pointer z-10 p-1 hidden sm:block ${
             isBeginning ? "opacity-50 cursor-default" : ""
           }`}
         >
           <IoIosArrowBack className="text-gray-700" size={25} />
         </div>
         <div
-          className={`custom-next rounded-full shadow-lg bg-white absolute top-1/2 right-2 cursor-pointer z-10 p-1 ${
+          className={`custom-next rounded-full shadow-lg bg-white absolute top-1/2 right-2 cursor-pointer z-10 p-1 hidden sm:block ${
             isEnd ? "opacity-50 cursor-default" : ""
           }`}
         >
           <IoIosArrowForward className="text-gray-900" size={25} />
         </div>
+        <div className="swiper-pagination block sm:hidden"></div>
       </Swiper>
     </div>
   );

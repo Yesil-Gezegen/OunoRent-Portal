@@ -40,7 +40,9 @@ function Register() {
       <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow  lg:max-w-4xl">
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
           <div className="flex flex-col justify-center items-center relative text-center mb-12">
-            <p className="mt-3 text-xl font-semibold text-center text-black">Hesap Oluştur</p>
+            <p className="mt-3 text-xl font-semibold text-center text-black">
+              Hesap Oluştur
+            </p>
             <div className="-mt-4">
               <svg
                 width="354"
@@ -86,7 +88,7 @@ function Register() {
               <input
                 type="email"
                 required
-                className="bg-white border px-10 p-4 border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block w-full focus:outline-red-500"
+                className="bg-white border px-10 p-4 border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block w-full font-medium focus:outline-red-500"
                 placeholder="john.doe@company.com"
                 id="email"
                 name="email"
@@ -180,7 +182,7 @@ function Register() {
             <div className="mt-6">
               <button
                 type="submit"
-                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white transition-colors duration-300 transform bg-gray-800 rounded-sm hover:bg-gray-700 focus:outline-none  uppercase"
+                className="w-full px-6 py-3 text-base font-medium tracking-wide text-white transition-colors duration-300 transform bg-gray-800 rounded-sm hover:bg-gray-700 focus:outline-none  uppercase"
               >
                 Üye Ol
               </button>
@@ -190,7 +192,7 @@ function Register() {
             <span className="w-1/6 border-b border-gray-300 lg:w-1/5" />
             <a
               href="/login"
-              className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline"
+              className="text-xs font-medium text-gray-900 uppercase hover:underline"
             >
               hesabınız var mı? GİRİŞ YAPIN
             </a>

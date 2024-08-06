@@ -40,7 +40,9 @@ export default function Login() {
       <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow lg:max-w-4xl">
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
           <div className="flex flex-col justify-center items-center relative text-center mb-12">
-            <p className="mt-3 text-xl font-semibold text-center text-black">Giriş Yap</p>
+            <p className="mt-3 text-xl font-semibold text-center text-black">
+              Giriş Yap
+            </p>
             <div className="-mt-3">
               <svg
                 width="172"
@@ -83,7 +85,7 @@ export default function Login() {
 
               <input
                 type="email"
-                className="bg-white border px-10 p-4 border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block w-full focus:outline-red-500"
+                className="bg-white border px-10 p-4 border-gray-300 text-gray-900 text-sm font-medium rounded-sm focus:ring-red-500 focus:border-red-500 block w-full focus:outline-red-500"
                 placeholder="john.doe@company.com"
                 id="email"
                 name="email"
@@ -121,7 +123,7 @@ export default function Login() {
 
               <input
                 type="password"
-                className="block w-full px-10 p-4 bg-white border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-red-500 focus:border-red-500 focus:outline-red-500"
+                className="block w-full px-10 p-4 bg-white border  font-medium border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-red-500 focus:border-red-500 focus:outline-red-500"
                 placeholder="•••••••••"
                 id="password"
                 name="password"
@@ -156,13 +158,16 @@ export default function Login() {
                     </svg>
                   )}
                 </button>
-                <span onClick={rememberMe} className="text-base text-black">
+                <span
+                  onClick={rememberMe}
+                  className="text-base font-medium text-black"
+                >
                   Beni Hatırla
                 </span>
               </div>
               <Link
                 to="/forgotstepone"
-                className="text-base text-slate-950 underline hover:text-red-600"
+                className="text-base font-medium text-slate-950 underline hover:text-red-600"
               >
                 Şifremi unuttum
               </Link>
@@ -171,7 +176,7 @@ export default function Login() {
             <div className="mt-6">
               <button
                 type="submit"
-                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white transition-colors duration-300 transform bg-gray-800 rounded-sm hover:bg-gray-700 focus:outline-none  uppercase"
+                className="w-full px-6 py-3 text-base font-medium tracking-wide text-white transition-colors duration-300 transform bg-gray-800 rounded-sm hover:bg-gray-700 focus:outline-none  uppercase"
               >
                 GİRİŞ YAP
               </button>
@@ -181,7 +186,7 @@ export default function Login() {
             <span className="w-1/5 border-b border-gray-300 md:w-1/4" />
             <Link
               to="/register"
-              className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline"
+              className="text-xs font-medium text-gray-900 uppercase hover:underline"
             >
               hesabınız yok mu? Üye ol
             </Link>
