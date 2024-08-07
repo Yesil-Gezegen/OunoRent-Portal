@@ -15,8 +15,10 @@ const About = lazy(() => import("./pages/About/About"));
 const Campaigns = lazy(() => import("./pages/Campaigns/Campaigns"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
 const Blog = lazy(() => import("./pages/Blog/Blog"));
+const BlogDetails = lazy(() => import("./pages/BlogDetails/BlogDetails"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
 const FaqPage = lazy(() => import("./pages/FAQ/FaqPage"));
+const CartEmty = lazy(() => import("./pages/CartEmpty/CartEmty"));
 const ProductDetails = lazy(() =>
   import("./pages/ProductDetails/ProductDetails")
 );
@@ -52,9 +54,11 @@ function Routers() {
     { path: "/campaigns", element: <Campaigns /> },
     { path: "/profile", element: <Profile /> },
     { path: "/blog", element: <Blog /> },
+    { path: "/blog/:blogId", element: <BlogDetails /> },
     { path: "/contact", element: <Contact /> },
     { path: "/faq", element: <FaqPage /> },
     { path: "/productdetails", element: <ProductDetails /> },
+    { path: "/cartempty", element: <CartEmty /> },
     {
       path: "/forgotstepone",
       element: <ForgotStepOne />,

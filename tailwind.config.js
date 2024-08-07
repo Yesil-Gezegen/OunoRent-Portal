@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       backgroundColor: {
-        "colorred": "#D60000"
+        "colorred": "#D60000",
+        "colorgray": "#F7F6F6"
       },
       colors: {
         "qred": "#D60000",
@@ -16,7 +17,7 @@ export default {
       },
       borderColor: {
         "qgray": "#f3f4f6"
-      }
+      },
     },
   },
   plugins: [],

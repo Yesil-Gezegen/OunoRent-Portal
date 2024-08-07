@@ -1,7 +1,7 @@
 import Routers from "./Routers";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { BlogProvider } from "./context/BlogContext.jsx";
-import { HeaderProvider } from "./context/HeaderContex.jsx";
+import { HeaderProvider } from "./context/HeaderContext.jsx";
 
 function App() {
   return (
