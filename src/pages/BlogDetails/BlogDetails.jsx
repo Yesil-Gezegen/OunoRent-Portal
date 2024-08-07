@@ -1,33 +1,52 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Layout from "../../layout/Layout";
 import png from "../../assets/image.png";
 import png1 from "../../assets/png.png";
 import PageTitle from "../../components/Helpers/PageTitle";
 import { PiCalendarDotsFill } from "react-icons/pi";
+import { useBlog } from "../../context/BlogContext";
 
 function BlogDetails() {
+  const { blogId } = useParams();
+  const { getBlogById } = useBlog();
+  const [blogDetails, setBlogDetails] = useState([]);
+
+  useEffect(() => {
+    const getBlogDetails = async () => {
+      try {
+        const data = await getBlogById(blogId);
+        console.log(data);
+        setBlogDetails(data);
+      } catch (error) {
+        console.error("Failed to fetch blog details:", error);
+      }
+    };
+    getBlogDetails();
+  }, [blogId, getBlogById]);
+
   return (
     <Layout childrenClasses="py-0">
       <div className="hidden md:block">
         <PageTitle
-          title="Blog Detayı"
+          title={blogDetails.title}
           breadcrumb={[
             { name: "Anasayfa", path: "/" },
             { name: "Blog", path: "/blog" },
-            { name: "Blog Detayının titleı gelecek", path: "/blogdetails" },
+            { name: blogDetails.title, path: `/blog/${blogDetails.blogId}` },
           ]}
         />
       </div>
       <div className="container mx-auto px-3 py-6 flex md:flex-row flex-col">
         <div className="w-full flex flex-col lg:w-full md:w-3/5 pr-0 md:pr-6 space-y-4">
           <img
-            src={png}
-            alt=""
+            src={`http://10.10.3.181:5244/${blogDetails.largeImageUrl}`}
+            alt="mini"
             className="w-full max-h-[600px] object-cover object-center"
           />
           <div className="flex justify-start items-center gap-2">
             <PiCalendarDotsFill className="text-gray-500" size={16} />
-            <p className="text-gray-500 text-sm">29.06.2024</p>
+            <p className="text-gray-500 text-sm">{blogDetails.date}</p>
           </div>
 
           <h3 className="font-semibold text-xl">

@@ -5,11 +5,15 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
 import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
-import { axiosInstance } from "../../helpers/axios/data";
+import { useHeader } from "../../context/HeaderContext";
 
 export default function Slider() {
   const [height, setHeight] = useState("auto");
-  const [slider, setSlider] = useState([]);
+  const { slider, fetchSliderData } = useHeader();
+
+  useEffect(() => {
+    fetchSliderData();
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -18,20 +22,6 @@ export default function Slider() {
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    const fetchSliderData = async () => {
-      try {
-        const response = await axiosInstance.get("/Slider/Getactive");
-        const returnedData = response.data;
-        setSlider(returnedData);
-        console.log("Başarılı", returnedData);
-      } catch (error) {
-        console.error("Slider verilerini çekerken hata oluştu:", error);
-      }
-    };
-    fetchSliderData();
   }, []);
 
   return (

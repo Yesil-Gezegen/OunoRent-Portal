@@ -6,7 +6,7 @@ export default function Breadcrumb({ paths = [{ name: "home", path: "/" }] }) {
       {paths && paths.length > 0 && (
         <div className="flex items-center py-4 overflow-x-auto whitespace-nowrap">
           {paths.map((path, index) => (
-            <span key={path.name} className="flex items-center">
+            <span key={path.path} className="flex items-center">
               <Link
                 to={path.path}
                 className={`hover:underline ${

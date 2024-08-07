@@ -1,25 +1,10 @@
-import React, { useState, useEffect, createContext, useContext } from "react";
-import { axiosInstance } from "../helpers/axios/data";
+import React, { useState, createContext, useContext } from "react";
 import { postData } from "../services/services";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    const getCategories = async () => {
-      try {
-        const response = await axiosInstance.get("/Category");
-        const returnedData = response.data;
-        setCategories(returnedData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getCategories();
-  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -29,12 +14,12 @@ export const AuthProvider = ({ children }) => {
   const login = async (values) => {
     const response = await postData("/auth/login", values);
     const data = response.data;
-    console.log("Response Data:", data);
+    console.log("Giriş Başarılı:", data);
     localStorage.setItem("token", data.token);
     setIsLoggedIn(true);
   };
 
-  const values = { categories, isLoggedIn, setIsLoggedIn, handleLogout, login };
+  const values = { isLoggedIn, setIsLoggedIn, handleLogout, login };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };

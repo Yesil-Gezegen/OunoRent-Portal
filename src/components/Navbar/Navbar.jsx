@@ -1,6 +1,4 @@
-import React from "react";
-import { useState } from "react";
-import { FaBars } from "react-icons/fa";
+import React, { useState, useMemo } from "react";
 import { CgMenuLeftAlt } from "react-icons/cg";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { IoMdClose, IoIosArrowDown, IoMdHeartEmpty } from "react-icons/io";
@@ -11,24 +9,26 @@ import { CiSearch } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import LogoIcon from "../svg/LogoIcon";
-import { useHeader } from "../../context/HeaderContex";
+import { useHeader } from "../../context/HeaderContext";
 
 export default function Navbar() {
-  const { categories, isLoggedIn, handleLogout } = useAuth();
-  const { menuItem } = useHeader();
+  const { isLoggedIn, handleLogout } = useAuth();
+  const { menuItem, categories } = useHeader();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
-  const sortedCategories = categories
-    .map((category) => ({
-      ...category,
-      subCategories: category.subCategories.sort(
-        (a, b) => a.orderNumber - b.orderNumber
-      ),
-    }))
-    .sort((a, b) => a.orderNumber - b.orderNumber);
+  const sortedCategories = useMemo(() => {
+    return categories
+      .map((category) => ({
+        ...category,
+        subCategories: category.subCategories.sort(
+          (a, b) => a.orderNumber - b.orderNumber
+        ),
+      }))
+      .sort((a, b) => a.orderNumber - b.orderNumber);
+  }, [categories]);
 
   return (
     <div className="shadow-sm">

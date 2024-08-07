@@ -54,7 +54,7 @@ function Routers() {
     { path: "/campaigns", element: <Campaigns /> },
     { path: "/profile", element: <Profile /> },
     { path: "/blog", element: <Blog /> },
-    { path: "/blogdetails", element: <BlogDetails /> },
+    { path: "/blog/:blogId", element: <BlogDetails /> },
     { path: "/contact", element: <Contact /> },
     { path: "/faq", element: <FaqPage /> },
     { path: "/productdetails", element: <ProductDetails /> },
