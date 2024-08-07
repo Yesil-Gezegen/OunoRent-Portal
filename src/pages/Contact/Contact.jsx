@@ -1,13 +1,44 @@
 import React from "react";
 import Layout from "../../layout/Layout";
 import PageTitle from "../../components/Helpers/PageTitle";
+import { useData } from "../../context/ApiContext";
+import { useFormik } from "formik";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { validationSchema } from "./schemas/ValidationSchema";
 
 function Contact() {
+  const { formDataPost } = useData();
+  const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
+    useFormik({
+      initialValues: {
+        name: "",
+        email: "",
+        body: "",
+        subjectCategory: "",
+        subject: "",
+        formDate: new Date().toISOString(),
+      },
+      validationSchema: validationSchema,
+      onSubmit: async (values, action) => {
+        try {
+          await formDataPost({ ...values, formDate: new Date().toISOString() });
+          toast.success("gönderildi");
+          setTimeout(() => {
+            action.resetForm();
+          }, 1000);
+        } catch (error) {
+          console.error("Error:", error);
+          toast.error("Gönderilemedi!");
+        }
+      },
+    });
   return (
     <Layout childrenClasses="py-0">
+      <ToastContainer />
       <div className="hidden md:block">
         <PageTitle
-          title="İletişim"
+          title="Bize Ulaşın"
           breadcrumb={[
             { name: "Anasayfa", path: "/" },
             { name: "İletişim", path: "/contact" },
@@ -15,7 +46,10 @@ function Contact() {
         />
       </div>
       <section className="text-gray-600 body-font relative">
-        <div className="container px-5 md:px-0 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
+        <form
+          onSubmit={handleSubmit}
+          className="container px-5 md:px-0 py-24 mx-auto flex sm:flex-nowrap flex-wrap"
+        >
           <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
             <iframe
               width="100%"
@@ -54,7 +88,7 @@ function Contact() {
               Geri Bildirim
             </h2>
             <p className="leading-relaxed mb-5 text-gray-600">
-              Post-ironic portland shabby chic echo park, banjo fashion axe
+              Bildirmek istediğiniz konuyu bize ulaştırın.
             </p>
             <div className="relative mb-4">
               <label htmlFor="name" className="leading-7 text-sm text-gray-600">
@@ -65,8 +99,15 @@ function Contact() {
                 id="name"
                 name="name"
                 className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
+              {touched.name && errors.name ? (
+                <div className="text-xs text-red-600">{errors.name}</div>
+              ) : null}
             </div>
+
             <div className="relative mb-4">
               <label
                 htmlFor="email"
@@ -79,7 +120,55 @@ function Contact() {
                 id="email"
                 name="email"
                 className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
+              {touched.email && errors.email ? (
+                <div className="text-xs text-red-600">{errors.email}</div>
+              ) : null}
+            </div>
+            <div className="relative mb-4">
+              <label
+                htmlFor="subjectCategory"
+                className="leading-7 text-sm text-gray-600"
+              >
+                Kategori
+              </label>
+              <input
+                type="text"
+                id="subjectCategory"
+                name="subjectCategory"
+                className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                value={values.subjectCategory}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {touched.subjectCategory && errors.subjectCategory ? (
+                <div className="text-xs text-red-600">
+                  {errors.subjectCategory}
+                </div>
+              ) : null}
+            </div>
+            <div className="relative mb-4">
+              <label
+                htmlFor="subject"
+                className="leading-7 text-sm text-gray-600"
+              >
+                Konu
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                value={values.subject}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {touched.subject && errors.subject ? (
+                <div className="text-xs text-red-600">{errors.subject}</div>
+              ) : null}
             </div>
             <div className="relative mb-4">
               <label
@@ -89,20 +178,29 @@ function Contact() {
                 Mesaj
               </label>
               <textarea
-                id="message"
-                name="message"
+                id="body"
+                name="body"
                 className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                value={values.body}
+                onChange={handleChange}
+                onBlur={handleBlur}
               ></textarea>
+              {touched.body && errors.body ? (
+                <div className="text-xs text-red-600">{errors.body}</div>
+              ) : null}
             </div>
-            <button className="text-white bg-colorred border-0 py-2 px-6 focus:outline-none hover:bg-qblack duration-300 rounded text-lg">
-              Button
+            <button
+              type="submit"
+              className="text-white bg-colorred border-0 py-2 px-6 focus:outline-none hover:bg-qblack duration-300 rounded text-lg"
+            >
+              Gönder
             </button>
             <p className="text-xs text-gray-500 mt-3">
               Chicharrones blog helvetica normcore iceland tousled brook viral
               artisan.
             </p>
           </div>
-        </div>
+        </form>
       </section>
     </Layout>
   );
