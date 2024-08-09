@@ -7,6 +7,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { postData } from "../../../services/services";
 import LogoIcon from "../../../components/svg/LogoIcon";
+import CustomButton from "../../../components/CustomButton/CustomButton";
+import CustomInput from "../../../components/CustomInput/Input";
+import { AiOutlineMail } from "react-icons/ai";
+import { PiLock } from "react-icons/pi";
 
 function Register() {
   const navigate = useNavigate();
@@ -61,131 +65,67 @@ function Register() {
             </div>
           </div>
           <form onSubmit={handleSubmit}>
-            <label
-              htmlFor="email"
-              className="block text-sm mt-4 font-medium text-gray-900"
-            >
-              Eposta adresi*
-            </label>
             <div className="relative flex items-center mt-1">
-              <span className="absolute">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-              </span>
-
-              <input
-                type="email"
-                required
-                className="bg-white border px-10 p-4 border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block w-full font-medium focus:outline-red-500"
-                placeholder="john.doe@company.com"
-                id="email"
-                name="email"
+              <CustomInput
+                label={"e-posta adresi*"}
+                name={"email"}
+                type={"email"}
+                labelClasses="text-sm mt-4 font-medium text-gray-900"
+                placeholder={"adres@eposta.com"}
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                children={
+                  touched.email && errors.email ? (
+                    <div className="text-xs text-red-600">{errors.email}</div>
+                  ) : null
+                }
+                icon={<AiOutlineMail className="h-6 w-5 mx-3 text-gray-500 " />}
               />
             </div>
-            {touched.email && errors.email ? (
-              <div className="text-red-600">{errors.email}</div>
-            ) : null}
-            <label
-              htmlFor="email"
-              className="block text-sm mt-4 font-medium text-gray-900"
-            >
-              Şifre*
-            </label>
-            <div className="relative flex items-center mt-1">
-              <span className="absolute">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                  />
-                </svg>
-              </span>
-
-              <input
-                type="password"
-                required
-                className="block w-full px-10 p-4 bg-white border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-red-500 focus:border-red-500 focus:outline-red-500"
-                placeholder="•••••••••"
-                id="password"
-                name="password"
+            <div className="relative flex items-center mt-4">
+              <CustomInput
+                label={"şifre*"}
+                name={"password"}
+                type={"password"}
+                labelClasses="text-sm mt-4 font-medium text-gray-900"
+                placeholder={"•••••••••"}
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                children={
+                  touched.password && errors.password ? (
+                    <div className="text-xs text-red-600">
+                      {errors.password}
+                    </div>
+                  ) : null
+                }
+                icon={<PiLock className="h-6 w-5 mx-3 text-gray-500" />}
               />
             </div>
-            {touched.password && errors.password ? (
-              <div className="text-red-600">{errors.password}</div>
-            ) : null}
-            <label
-              htmlFor="email"
-              className="block text-sm mt-4 font-medium text-gray-900"
-            >
-              Tekrar Şifre*
-            </label>
-            <div className="relative flex items-center mt-1">
-              <span className="absolute">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                  />
-                </svg>
-              </span>
-
-              <input
-                type="password"
-                required
-                className="block w-full px-10 p-4 bg-white border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-red-500 focus:border-red-500 focus:outline-red-500"
-                placeholder="•••••••••"
-                id="passwordConfirm"
-                name="passwordConfirm"
+            <div className="relative flex items-center mt-4">
+              <CustomInput
+                label={"şifre tekrarı*"}
+                name={"passwordConfirm"}
+                type={"password"}
+                labelClasses="text-sm mt-4 font-medium text-gray-900"
+                placeholder={"•••••••••"}
                 value={values.passwordConfirm}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                children={
+                  touched.passwordConfirm && errors.passwordConfirm ? (
+                    <div className="text-xs text-red-600">
+                      {errors.passwordConfirm}
+                    </div>
+                  ) : null
+                }
+                icon={<PiLock className="h-6 w-5 mx-3 text-gray-500" />}
               />
             </div>
-            {touched.passwordConfirm && errors.passwordConfirm ? (
-              <div className="text-red-600">{errors.passwordConfirm}</div>
-            ) : null}
 
             <div className="mt-6">
-              <button
-                type="submit"
-                className="w-full px-6 py-3 text-base font-medium tracking-wide text-white transition-colors duration-300 transform bg-gray-800 rounded-sm hover:bg-gray-700 focus:outline-none  uppercase"
-              >
-                Üye Ol
-              </button>
+              <CustomButton type="submit" children={"gönder"} color="black" />
             </div>
           </form>
           <div className="flex items-center justify-between mt-4">

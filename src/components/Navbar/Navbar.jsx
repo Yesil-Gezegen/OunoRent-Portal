@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import LogoIcon from "../svg/LogoIcon";
 import { useHeader } from "../../context/HeaderContext";
+import CustomButton from "../CustomButton/CustomButton";
+import CustomInput from "../CustomInput/Input";
 
 export default function Navbar() {
   const { isLoggedIn, handleLogout } = useAuth();
@@ -31,27 +33,28 @@ export default function Navbar() {
   }, [categories]);
 
   return (
-    <div className="shadow-sm">
+    <nav className="shadow-sm">
       <div className="container mx-auto flex justify-between items-center px-3 xl:px-0 py-0 md:py-2">
         <Link to="/" className="hidden md:block text-4xl w-24 h-1/2">
           <LogoIcon width={150} height={80} />
         </Link>
         <form className="hidden md:flex justify-center items-center px-5 py-5 w-2/5">
           <div className="flex w-full relative">
-            <input
-              type="search"
-              id="search"
-              className="block w-full h-10 px-4 ps-4 text-sm text-gray-900 border rounded-none bg-white focus:border-red-500 focus:outline-none focus:shadow-inset border-solid border-neutral-200"
-              placeholder="Ürün Ara"
-              required=""
+            <CustomInput
+              label={""}
+              name={"search"}
+              type={"search"}
+              placeholder={"Ürün Ara"}
+              inputClasses={"rounded-none"}
             />
           </div>
-          <button
-            type="submit"
-            className="text-white end-0 h-10 bottom-0 bg-colorred hover:bg-gray-950 focus:outline-none font-medium rounded-none border-red-1 text-sm px-6 cursor-pointer transition duration-300"
-          >
-            <CiSearch color="white" size={22} />
-          </button>
+          <div className="w-24">
+            <CustomButton
+              type="submit"
+              children={<CiSearch color="white" size={22} />}
+              color="search"
+            />
+          </div>
         </form>
 
         <div className="hidden md:flex justify-between items-center gap-4">
@@ -63,14 +66,12 @@ export default function Navbar() {
           {!isLoggedIn ? (
             <div className="flex justify-center items-center gap-1">
               <Link to="/login">
-                <button className="px-3 h-10 font-medium w-auto rounded-md bg-white text-lg text-black transition-colors duration-200 transform hover:text-red-700 whitespace-nowrap capitalize">
+                <button className="px-3 h-10 font-medium w-auto rounded-md bg-white text-base text-black transition-colors duration-200 transform hover:text-red-700 whitespace-nowrap capitalize">
                   giriş yap{" "}
                 </button>
               </Link>
               <Link to="/register">
-                <button className=" px-4 h-10 font-medium tracking-wide text-white capitalize transition-colors duration-500 transform bg-colorred whitespace-nowrap focus:outline-none shadow rounded-md hover:bg-gray-900">
-                  Üye Ol
-                </button>
+                <CustomButton type="submit" children={"üye ol"} color="black" />
               </Link>
             </div>
           ) : (
@@ -125,19 +126,19 @@ export default function Navbar() {
             <div className="hidden md:flex space-x-4 mt-0 md:mt-2">
               <Link
                 to="/nasilcalisir"
-                className="relative inline cursor-pointer text-md font-medium before:bg-white  before:absolute before:-bottom-0.5 before:block before:h-[1px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100"
+                className="relative inline cursor-pointer text-md font-medium"
               >
                 Nasıl Çalışır?
               </Link>
               <Link
                 to="/kurumsal"
-                className="relative inline cursor-pointer text-md font-medium before:bg-white  before:absolute before:-bottom-0.5 before:block before:h-[1px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100 "
+                className="relative inline cursor-pointer text-md font-medium"
               >
                 Kurumsal
               </Link>
               <Link
                 to="/campaigns"
-                className="relative inline cursor-pointer text-md font-medium before:bg-white  before:absolute before:-bottom-0.5 before:block before:h-[1px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100 "
+                className="relative inline cursor-pointer text-md font-medium"
               >
                 Kampanyalar
               </Link>
@@ -145,7 +146,7 @@ export default function Navbar() {
             {/* mobile navbar */}
             <div className="flex justify-between items-center md:hidden flex-grow">
               <div className="flex-1 flex justify-start">
-                <button className="py-2  -ml-2 my-2" onClick={toggleDrawer}>
+                <button className="py-2 -ml-2 my-2" onClick={toggleDrawer}>
                   <CgMenuLeftAlt size={24} />
                 </button>
               </div>
@@ -318,22 +319,23 @@ export default function Navbar() {
         )}
       </div>
       {/* kategori slider */}
-      <div className="container py-4 mx-auto px-3 xl:px-0">
-        <div className="-mx-3 overflow-y-auto whitespace-nowrap scroll-hidden flex justify-evenly">
+      <div className="container mx-auto px-3 xl:px-0">
+        <div className="-mx-3 overflow-y-auto whitespace-nowrap scroll-hidden flex justify-evenly items-center">
           {menuItem.map((item, index) => (
             <a
               key={index}
-              className="mx-4 text-sm leading-5 text-slate-950 transition-colors duration-300 transform md:my-0"
+              className="mx-4 h-14 text-sm leading-5 text-slate-950 transition-colors duration-300 transform md:my-0 flex items-center relative group"
               href="#"
             >
               <span className="flex justify-start items-center gap-1 font-medium">
                 <IoPhonePortraitOutline />
                 {item.label}
               </span>
+              <span className="absolute bottom-0 left-0 block w-full h-0.5 bg-qred transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
             </a>
           ))}
         </div>
       </div>
-    </div>
+    </nav>
   );
 }

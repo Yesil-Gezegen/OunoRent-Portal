@@ -6,6 +6,8 @@ import { useFormik } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { validationSchema } from "./schemas/ValidationSchema";
+import CustomButton from "../../components/CustomButton/CustomButton";
+import CustomInput from "../../components/CustomInput/Input";
 
 function Contact() {
   const { formDataPost } = useData();
@@ -23,7 +25,7 @@ function Contact() {
       onSubmit: async (values, action) => {
         try {
           await formDataPost({ ...values, formDate: new Date().toISOString() });
-          toast.success("gönderildi");
+          toast.success("Mesajınız gönderildi.");
           setTimeout(() => {
             action.resetForm();
           }, 1000);
@@ -91,91 +93,81 @@ function Contact() {
               Bildirmek istediğiniz konuyu bize ulaştırın.
             </p>
             <div className="relative mb-4">
-              <label htmlFor="name" className="leading-7 text-sm text-gray-600">
-                Ad Soyad
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              {" "}
+              <CustomInput
+                label={"ad soyad*"}
+                name={"name"}
+                type={"text"}
+                placeholder={""}
                 value={values.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                children={
+                  touched.name && errors.name ? (
+                    <div className="text-xs text-red-600">{errors.name}</div>
+                  ) : null
+                }
               />
-              {touched.name && errors.name ? (
-                <div className="text-xs text-red-600">{errors.name}</div>
-              ) : null}
             </div>
-
             <div className="relative mb-4">
-              <label
-                htmlFor="email"
-                className="leading-7 text-sm text-gray-600"
-              >
-                E-posta
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              {" "}
+              <CustomInput
+                label={"e-posta*"}
+                name={"email"}
+                type={"email"}
+                placeholder={""}
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                children={
+                  touched.email && errors.email ? (
+                    <div className="text-xs text-red-600">{errors.email}</div>
+                  ) : null
+                }
               />
-              {touched.email && errors.email ? (
-                <div className="text-xs text-red-600">{errors.email}</div>
-              ) : null}
             </div>
             <div className="relative mb-4">
-              <label
-                htmlFor="subjectCategory"
-                className="leading-7 text-sm text-gray-600"
-              >
-                Kategori
-              </label>
-              <input
-                type="text"
-                id="subjectCategory"
-                name="subjectCategory"
-                className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              {" "}
+              <CustomInput
+                label={"kategori*"}
+                name={"subjectCategory"}
+                type={"text"}
+                placeholder={""}
                 value={values.subjectCategory}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                children={
+                  touched.subjectCategory && errors.subjectCategory ? (
+                    <div className="text-xs text-red-600">
+                      {errors.subjectCategory}
+                    </div>
+                  ) : null
+                }
               />
-              {touched.subjectCategory && errors.subjectCategory ? (
-                <div className="text-xs text-red-600">
-                  {errors.subjectCategory}
-                </div>
-              ) : null}
             </div>
             <div className="relative mb-4">
-              <label
-                htmlFor="subject"
-                className="leading-7 text-sm text-gray-600"
-              >
-                Konu
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              {" "}
+              <CustomInput
+                label={"konu*"}
+                name={"subject"}
+                type={"text"}
+                placeholder={""}
                 value={values.subject}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                children={
+                  touched.subject && errors.subject ? (
+                    <div className="text-xs text-red-600">{errors.subject}</div>
+                  ) : null
+                }
               />
-              {touched.subject && errors.subject ? (
-                <div className="text-xs text-red-600">{errors.subject}</div>
-              ) : null}
             </div>
             <div className="relative mb-4">
               <label
                 htmlFor="message"
                 className="leading-7 text-sm text-gray-600"
               >
-                Mesaj
+                Mesaj*
               </label>
               <textarea
                 id="body"
@@ -189,12 +181,7 @@ function Contact() {
                 <div className="text-xs text-red-600">{errors.body}</div>
               ) : null}
             </div>
-            <button
-              type="submit"
-              className="text-white bg-colorred border-0 py-2 px-6 focus:outline-none hover:bg-qblack duration-300 rounded text-lg"
-            >
-              Gönder
-            </button>
+            <CustomButton type="submit" children={"gönder"} color="red" />
             <p className="text-xs text-gray-500 mt-3">
               Chicharrones blog helvetica normcore iceland tousled brook viral
               artisan.

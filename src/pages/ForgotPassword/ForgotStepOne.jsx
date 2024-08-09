@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "../../layout/Layout";
 import { Link } from "react-router-dom";
+import CustomButton from "../../components/CustomButton/CustomButton";
 
 function ForgotStepOne() {
   return (
@@ -53,12 +54,7 @@ function ForgotStepOne() {
           ) : null} */}
 
           <div className="mt-6">
-            <button
-              type="submit"
-              className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white transition-colors duration-300 transform bg-gray-800 rounded-none hover:bg-gray-700 focus:outline-none  uppercase"
-            >
-              GÖNDER
-            </button>
+            <CustomButton type="submit" children={"gönder"} color="black" />
           </div>
         </form>
         <div className="flex items-center justify-between mt-4">
