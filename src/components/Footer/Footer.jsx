@@ -9,13 +9,16 @@ function Footer() {
     getFooterData();
   }, []);
   useEffect;
-  const groupedData = footerData.reduce((prev, item) => {
-    if (!prev[item.column]) {
-      prev[item.column] = [];
+
+  const groupedData = {};
+
+  footerData.forEach((item) => {
+    if (!groupedData[item.column]) {
+      groupedData[item.column] = [];
     }
-    prev[item.column].push(item);
-    return prev;
-  }, {});
+    groupedData[item.column].push(item);
+  });
+  
   return (
     <footer className="bg-white">
       <div className="container px-6 py-12 mx-auto">
