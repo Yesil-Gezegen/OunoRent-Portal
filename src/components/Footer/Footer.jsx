@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import image from "./../../assets/ounologo.png";
 import { Link } from "react-router-dom";
+import { useData } from "../../context/ApiContext";
 
 function Footer() {
+  const { footerData, getFooterData } = useData();
+  useEffect(() => {
+    getFooterData();
+  }, []);
+  useEffect;
+  const groupedData = footerData.reduce((prev, item) => {
+    if (!prev[item.column]) {
+      prev[item.column] = [];
+    }
+    prev[item.column].push(item);
+    return prev;
+  }, {});
   return (
     <footer className="bg-white">
       <div className="container px-6 py-12 mx-auto">
         <hr className="my-6 border-gray-200 md:my-10" />
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          <div>
+        <div className="w-full gap-4 md:gap-1 grid grid-cols-1 md:flex md:justify-center md:items-start ">
+          <div className="w-full md:w-1/5">
             <p className="font-semibold text-gray-800">Hakkımızda</p>
             <div className="flex flex-col items-start mt-5 space-y-2">
               <p
@@ -20,88 +33,28 @@ function Footer() {
               </p>
             </div>
           </div>
-
-          <div>
-            <p className="font-semibold text-gray-800">Ounorent</p>
-            <div className="flex flex-col items-start mt-5 space-y-2">
-              <Link
-                to="/about"
-                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
-              >
-                Hakkımızda
-              </Link>
-              <a
-                href="#"
-                className="text-gray-400 font-normal text-sm text-smtransition-colors duration-300 hover:text-red-500"
-              >
-                Markalar
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
-              >
-                Çerezler
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
-              >
-                KVKK
-              </a>
-
-              <a
-                href="#"
-                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
-              >
-                Sözleşmeler
-              </a>
-            </div>
-          </div>
-          <div>
-            <p className="font-semibold text-gray-800">Genel</p>
-            <div className="flex flex-col items-start mt-5 space-y-2">
-              <Link
-                to="/blog"
-                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
-              >
-                Blog
-              </Link>
-              <Link
-                to="/campaigns"
-                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
-              >
-                Kampanyalar
-              </Link>
-              <Link
-                to="/kurumsal"
-                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
-              >
-                Kurumsal
-              </Link>
-            </div>
-          </div>
-          <div>
-            <p className="font-semibold text-gray-800">Yardım</p>
-            <div className="flex flex-col items-start mt-5 space-y-2">
-              <Link
-                to="/contact"
-                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
-              >
-                İletişim
-              </Link>
-              <Link
-                to="/faq"
-                className="text-gray-400 font-normal text-sm transition-colors duration-300 hover:text-red-500"
-              >
-                SSS
-              </Link>
-              <Link
-                to="/nasilcalisir"
-                className="text-gray-400 font-normal text-sm transition-colors duration-300  hover:text-red-500"
-              >
-                Nasıl Çalışır?
-              </Link>
-            </div>
+          <div className="w-full md:w-4/5 grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
+            {Object.keys(groupedData).map((column) => (
+              <div key={column}>
+                <p className="font-semibold text-gray-800">
+                  {column === "0" && "Ounorent"}
+                  {column === "1" && "Genel"}
+                  {column === "2" && "Yardım"}
+                  {column === "3" && "İletişim"}
+                </p>
+                <div className="flex flex-col items-start mt-5 space-y-2">
+                  {groupedData[column].map((item, index) => (
+                    <Link
+                      key={item.footerItemId || index}
+                      to={item.targetUrl}
+                      className="text-gray-400 font-base text-sm transition-colors duration-300 hover:text-red-500"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
         <hr className="my-6 border-gray-200 md:my-10" />

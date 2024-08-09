@@ -5,6 +5,7 @@ export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [faqData, setFaqData] = useState([]);
+  const [footerData, setFooterData] = useState([]);
 
   const formDataPost = async (values) => {
     try {
@@ -24,8 +25,23 @@ export const DataProvider = ({ children }) => {
       console.log(error);
     }
   };
+  const getFooterData = async () => {
+    try {
+      const response = await getData("/FooterItem/getActive");
+      const data = response.data;
+      setFooterData(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  const values = { formDataPost, getFaqData, faqData };
+  const values = {
+    formDataPost,
+    getFaqData,
+    faqData,
+    footerData,
+    getFooterData,
+  };
 
   return <DataContext.Provider value={values}>{children}</DataContext.Provider>;
 };
