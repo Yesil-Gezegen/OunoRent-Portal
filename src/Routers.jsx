@@ -35,6 +35,7 @@ const ForgotStepThree = lazy(() =>
 
 function Routers() {
   const { isLoggedIn } = useAuth();
+
   const router = createBrowserRouter([
     {
       path: "/",

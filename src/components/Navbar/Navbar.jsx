@@ -45,7 +45,7 @@ export default function Navbar() {
               name={"search"}
               type={"search"}
               placeholder={"Ürün Ara"}
-              inputClasses={"rounded-none"}
+              inputClasses={"rounded-none focus:outline-none"}
             />
           </div>
           <div className="w-24">

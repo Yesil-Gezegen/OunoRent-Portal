@@ -52,15 +52,12 @@ function BlogDetails() {
           <h3 className="font-semibold text-xl">
             En İyi ve En Çok Tercih Edilen Akıllı Saatler 2024
           </h3>
-          <p className="">
-            Teknolojinin giyilebilir hali! Watchlar, hayatımıza konfor katan her
-            an yanımızda taşıdığımız teknolojik cihazdır. Yani bir nevi kol
-            arkadaşı da denilebilir. Kendi isteğinize göre kişiselleştirebilir
-            ve gün içerisindeki yapacağınız aktiviteleri kolay bir şekilde
-            gerçekleştirebilirsiniz. Akıllı saatler, çağrı ve mesaj bildirimi,
-            hava durumu ve navigasyon bilgisi gibi temel özelliklerinin yanı
-            sıra bazı modellerde detaylı analiz edici özelliklere sahiptir.
-          </p>
+          <div className="w-full overflow-hidden text-ellipsis break-words ">
+            <div className="prose max-w-screen-md">
+              <div dangerouslySetInnerHTML={{ __html: blogDetails.body }} />
+            </div>
+          </div>
+
           <h4 className="font-semibold">
             Akıllı Saatlerde Hayat Kolaylaştırıcı 10 Temel Özellik
           </h4>
