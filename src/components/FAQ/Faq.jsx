@@ -1,38 +1,27 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
+import { IoIosArrowDown } from "react-icons/io";
 
-const faqs = [
-  {
-    question: "Nasıl hesap oluşturabilirim?",
-    answer:
-      "To create an account, find the 'Sign up' or 'Create account' button, fill out the registration form with your personal information, and click 'Create account' or 'Sign up.' Verify your email address if needed, and then log in to start using the platform.",
-  },
-  {
-    question: "Ödeme yöntemleri nelerdir?",
-    answer:
-      "Our focus on providing robust and user-friendly content management capabilities ensures that you can manage your content with confidence, and achieve your content marketing goals with ease.",
-  },
-  {
-    question: "Kiralama süresini uzatabilir miyim?",
-    answer:
-      "Our focus on providing robust and user-friendly content management capabilities ensures that you can manage your content with confidence, and achieve your content marketing goals with ease.",
-  },
-  {
-    question: "Yardım ve destek nasıl alabilirim?",
-    answer:
-      "Our focus on providing robust and user-friendly content management capabilities ensures that you can manage your content with confidence, and achieve your content marketing goals with ease.",
-  },
-];
-
-const Faq = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+const Faq = ({ data }) => {
+  const [activeFaqId, setActiveFaqId] = useState(null);
   const [heights, setHeights] = useState([]);
   const contentRefs = useRef([]);
 
+  const sortedData = useMemo(() => {
+    return [...data].sort((a, b) => a.orderNumber - b.orderNumber);
+  }, [data]);
+
   useEffect(() => {
-    setHeights(contentRefs.current.map((ref) => (ref ? ref.scrollHeight : 0)));
-  }, []);
-  const handleClick = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
+    const newHeights = {};
+    sortedData.forEach((faq) => {
+      if (contentRefs.current[faq.faqId]) {
+        newHeights[faq.faqId] = contentRefs.current[faq.faqId].scrollHeight;
+      }
+    });
+    setHeights(newHeights);
+  }, [sortedData]);
+
+  const handleClick = (faqId) => {
+    setActiveFaqId(activeFaqId === faqId ? null : faqId);
   };
 
   return (
@@ -49,51 +38,41 @@ const Faq = () => {
               </h2>
             </div>
             <div>
-              {faqs.map((faq, index) => (
+              {sortedData.map((faq) => (
                 <div
-                  key={index}
+                  key={faq.faqId}
                   className={`py-8 border-b border-solid border-gray-200 ${
-                    activeIndex === index ? "active" : ""
+                    activeFaqId === faq.faqId ? "active" : ""
                   }`}
                 >
                   <button
                     className="group inline-flex items-center justify-between text-xl font-normal leading-8 text-gray-600 w-full transition duration-500 hover:text-qred"
-                    onClick={() => handleClick(index)}
-                    aria-expanded={activeIndex === index}
+                    onClick={() => handleClick(faq.faqId)}
+                    aria-expanded={activeFaqId === faq.faqId}
                   >
-                    <h5>{faq.question}</h5>
-                    <svg
+                    <h5 className="text-start">{faq.label}</h5>
+                    <IoIosArrowDown
+                      size={22}
                       className={`text-gray-900 transition-transform duration-500 group-hover:text-qred ${
-                        activeIndex === index ? "transform rotate-180" : ""
+                        activeFaqId === faq.faqId ? "transform rotate-180" : ""
                       }`}
-                      width={22}
-                      height={22}
-                      viewBox="0 0 22 22"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    />
                   </button>
                   <div
-                    ref={(el) => (contentRefs.current[index] = el)}
+                    ref={(el) => (contentRefs.current[faq.faqId] = el)}
                     className={`w-full overflow-hidden transition-all duration-500 ${
-                      activeIndex === index ? "max-h-[1000px]" : "max-h-0"
+                      activeFaqId === faq.faqId ? "max-h-auto" : "max-h-0"
                     }`}
                     style={{
                       maxHeight:
-                        activeIndex === index ? `${heights[index]}px` : "0",
+                        activeFaqId === faq.faqId
+                          ? `${heights[faq.faqId]}px`
+                          : "0",
                     }}
-                    aria-hidden={activeIndex !== index}
+                    aria-hidden={activeFaqId !== faq.faqId}
                   >
                     <p className="text-base font-normal text-gray-600">
-                      {faq.answer}
+                      {faq.text}
                     </p>
                   </div>
                 </div>

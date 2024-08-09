@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../layout/Layout";
 import PageTitle from "../../components/Helpers/PageTitle";
 import png from "../../assets/png.png";
@@ -8,6 +8,7 @@ import { BsBagCheck, BsCalendar2Check } from "react-icons/bs";
 import { RxUpdate } from "react-icons/rx";
 import { IoLocationOutline } from "react-icons/io5";
 import Faq from "../../components/FAQ/Faq";
+import { useData } from "../../context/ApiContext";
 
 const steps = [
   {
@@ -40,6 +41,10 @@ const steps = [
 ];
 
 function Howitworks() {
+  const { getFaqData, faqData } = useData();
+  useEffect(() => {
+    getFaqData();
+  }, []);
   return (
     <Layout childrenClasses="py-0">
       <div className="hidden md:block">
@@ -114,7 +119,7 @@ function Howitworks() {
             </p>
           </div>
         </div>
-        <Faq />
+        <Faq data={faqData} />
       </section>
     </Layout>
   );
